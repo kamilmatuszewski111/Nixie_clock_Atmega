@@ -1,0 +1,2096 @@
+
+inzynierka.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000bca  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  00000c3e  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000056  00800060  00800060  00000c3e  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000c3e  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000c70  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000168  00000000  00000000  00000cac  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   0000150a  00000000  00000000  00000e14  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000a26  00000000  00000000  0000231e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000ec9  00000000  00000000  00002d44  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000003b8  00000000  00000000  00003c10  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000637  00000000  00000000  00003fc8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000bab  00000000  00000000  000045ff  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000128  00000000  00000000  000051aa  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+   8:	0c 94 8b 00 	jmp	0x116	; 0x116 <__vector_2>
+   c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  10:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  14:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  18:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  1c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  20:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  24:	0c 94 73 00 	jmp	0xe6	; 0xe6 <__vector_9>
+  28:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  2c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  30:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  34:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  38:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  3c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  40:	0c 94 48 00 	jmp	0x90	; 0x90 <__vector_16>
+  44:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  48:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  4c:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  50:	0c 94 46 00 	jmp	0x8c	; 0x8c <__bad_interrupt>
+  54:	3b 02       	muls	r19, r27
+  56:	3e 02       	muls	r19, r30
+  58:	41 02       	muls	r20, r17
+  5a:	44 02       	muls	r20, r20
+  5c:	47 02       	muls	r20, r23
+  5e:	4a 02       	muls	r20, r26
+  60:	4d 02       	muls	r20, r29
+  62:	50 02       	muls	r21, r16
+  64:	53 02       	muls	r21, r19
+  66:	56 02       	muls	r21, r22
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf e5       	ldi	r28, 0x5F	; 95
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_clear_bss>:
+  74:	20 e0       	ldi	r18, 0x00	; 0
+  76:	a0 e6       	ldi	r26, 0x60	; 96
+  78:	b0 e0       	ldi	r27, 0x00	; 0
+  7a:	01 c0       	rjmp	.+2      	; 0x7e <.do_clear_bss_start>
+
+0000007c <.do_clear_bss_loop>:
+  7c:	1d 92       	st	X+, r1
+
+0000007e <.do_clear_bss_start>:
+  7e:	a6 3b       	cpi	r26, 0xB6	; 182
+  80:	b2 07       	cpc	r27, r18
+  82:	e1 f7       	brne	.-8      	; 0x7c <.do_clear_bss_loop>
+  84:	0e 94 63 02 	call	0x4c6	; 0x4c6 <main>
+  88:	0c 94 e3 05 	jmp	0xbc6	; 0xbc6 <_exit>
+
+0000008c <__bad_interrupt>:
+  8c:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000090 <__vector_16>:
+	return a2dConvert10bit(ch)>>2;			// return ADC MSB byte
+}
+
+//! Interrupt handler for ADC complete interrupt.
+SIGNAL(SIG_ADC)
+{
+  90:	1f 92       	push	r1
+  92:	0f 92       	push	r0
+  94:	0f b6       	in	r0, 0x3f	; 63
+  96:	0f 92       	push	r0
+  98:	11 24       	eor	r1, r1
+  9a:	8f 93       	push	r24
+	// set the a2d conversion flag to indicate "complete"
+	a2dCompleteFlag = TRUE;
+  9c:	8f ef       	ldi	r24, 0xFF	; 255
+  9e:	80 93 63 00 	sts	0x0063, r24	; 0x800063 <a2dCompleteFlag>
+}
+  a2:	8f 91       	pop	r24
+  a4:	0f 90       	pop	r0
+  a6:	0f be       	out	0x3f, r0	; 63
+  a8:	0f 90       	pop	r0
+  aa:	1f 90       	pop	r1
+  ac:	18 95       	reti
+
+000000ae <DCF_Initalize>:
+
+void DCF_Initalize()
+{
+	
+	//konfiguracja kierunku portu s³u¿¹cego do w³¹czenia lub wy³aczenia odbiornika DCF
+	DCF_P1_DIR |= DCF_P1;
+  ae:	b8 9a       	sbi	0x17, 0	; 23
+
+
+
+  //konfiguracja TIMER1
+	TCCR1B = (1<<CS11)|(1<<CS10); //preskaler 256 TIMER1
+  b0:	83 e0       	ldi	r24, 0x03	; 3
+  b2:	8e bd       	out	0x2e, r24	; 46
+  TCNT1 = 0;
+  b4:	1d bc       	out	0x2d, r1	; 45
+  b6:	1c bc       	out	0x2c, r1	; 44
+  TIFR |= (1<<TOV1);
+  b8:	88 b7       	in	r24, 0x38	; 56
+  ba:	84 60       	ori	r24, 0x04	; 4
+  bc:	88 bf       	out	0x38, r24	; 56
+ 
+ 
+  
+	// konfiguracja przerwania od DCF77
+  GICR|=(1<<DCF_INT);
+  be:	8b b7       	in	r24, 0x3b	; 59
+  c0:	80 68       	ori	r24, 0x80	; 128
+  c2:	8b bf       	out	0x3b, r24	; 59
+  DCF_INT_RISING; //zbocze narastajace -szukanie bitu synchronizacji
+  c4:	8c e0       	ldi	r24, 0x0C	; 12
+  c6:	85 bf       	out	0x35, r24	; 53
+  DCF_INT_ON;
+  c8:	8a b7       	in	r24, 0x3a	; 58
+  ca:	80 68       	ori	r24, 0x80	; 128
+  cc:	8a bf       	out	0x3a, r24	; 58
+  
+	// ustawienie pocz¹tkowcyh wartoœci zmeinnych
+
+	DCF_sync=0;
+  ce:	10 92 64 00 	sts	0x0064, r1	; 0x800064 <DCF_sync>
+	DCF_bit=0;
+  d2:	10 92 65 00 	sts	0x0065, r1	; 0x800065 <DCF_bit>
+	DCF_zasieg=1;
+  d6:	81 e0       	ldi	r24, 0x01	; 1
+  d8:	80 93 67 00 	sts	0x0067, r24	; 0x800067 <DCF_zasieg>
+	
+  sei(); // w³aczenie przerwan
+  dc:	78 94       	sei
+
+	//w³aczenie Timera1
+	TIMER1_ON;
+  de:	89 b7       	in	r24, 0x39	; 57
+  e0:	84 60       	ori	r24, 0x04	; 4
+  e2:	89 bf       	out	0x39, r24	; 57
+  e4:	08 95       	ret
+
+000000e6 <__vector_9>:
+}
+
+
+//obs³uga przrwania od przepe³nienia licznika timera 1
+ISR(TIMER1_OVF_vect)
+{
+  e6:	1f 92       	push	r1
+  e8:	0f 92       	push	r0
+  ea:	0f b6       	in	r0, 0x3f	; 63
+  ec:	0f 92       	push	r0
+  ee:	11 24       	eor	r1, r1
+  f0:	8f 93       	push	r24
+	if (DCF_zasieg>1)
+  f2:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <DCF_zasieg>
+  f6:	82 30       	cpi	r24, 0x02	; 2
+  f8:	28 f0       	brcs	.+10     	; 0x104 <__vector_9+0x1e>
+		DCF_zasieg--; //zmniejsz zasieg
+  fa:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <DCF_zasieg>
+  fe:	81 50       	subi	r24, 0x01	; 1
+ 100:	80 93 67 00 	sts	0x0067, r24	; 0x800067 <DCF_zasieg>
+	flaga=1;
+ 104:	81 e0       	ldi	r24, 0x01	; 1
+ 106:	80 93 66 00 	sts	0x0066, r24	; 0x800066 <flaga>
+	
+}
+ 10a:	8f 91       	pop	r24
+ 10c:	0f 90       	pop	r0
+ 10e:	0f be       	out	0x3f, r0	; 63
+ 110:	0f 90       	pop	r0
+ 112:	1f 90       	pop	r1
+ 114:	18 95       	reti
+
+00000116 <__vector_2>:
+//przerwanie od zmainy sygna³u DCF77
+ISR (DCF_INT_vector)
+{
+ 116:	1f 92       	push	r1
+ 118:	0f 92       	push	r0
+ 11a:	0f b6       	in	r0, 0x3f	; 63
+ 11c:	0f 92       	push	r0
+ 11e:	11 24       	eor	r1, r1
+ 120:	2f 93       	push	r18
+ 122:	8f 93       	push	r24
+ 124:	9f 93       	push	r25
+ 126:	ef 93       	push	r30
+ 128:	ff 93       	push	r31
+	flaga=2;
+ 12a:	82 e0       	ldi	r24, 0x02	; 2
+ 12c:	80 93 66 00 	sts	0x0066, r24	; 0x800066 <flaga>
+		1,5s dp 2s - synchronizacja
+				1.5 /  0,000032 ~ 46875
+				2   /  0,000032 ~ 62500
+    stan 0 powinien byc w czasie: pomiedzy 750ms (23437) a 950ms (29687)
+	*/
+	if (DCF_IF_RISING) //jezeli reakcja na zbocze narastajace oancza ¿e poprzednim poziom logiczny to 0
+ 130:	05 b6       	in	r0, 0x35	; 53
+ 132:	03 fe       	sbrs	r0, 3
+ 134:	2b c0       	rjmp	.+86     	; 0x18c <__vector_2+0x76>
+ 136:	05 b6       	in	r0, 0x35	; 53
+ 138:	02 fe       	sbrs	r0, 2
+ 13a:	28 c0       	rjmp	.+80     	; 0x18c <__vector_2+0x76>
+	{
+		//	szukaj bitu synchronizacji czas od 1,5s do 2s
+		if ((TCNT1 > 25000) && (TCNT1 < 33333))
+ 13c:	8c b5       	in	r24, 0x2c	; 44
+ 13e:	9d b5       	in	r25, 0x2d	; 45
+ 140:	89 3a       	cpi	r24, 0xA9	; 169
+ 142:	91 46       	sbci	r25, 0x61	; 97
+ 144:	58 f0       	brcs	.+22     	; 0x15c <__vector_2+0x46>
+ 146:	8c b5       	in	r24, 0x2c	; 44
+ 148:	9d b5       	in	r25, 0x2d	; 45
+ 14a:	85 33       	cpi	r24, 0x35	; 53
+ 14c:	92 48       	sbci	r25, 0x82	; 130
+ 14e:	30 f4       	brcc	.+12     	; 0x15c <__vector_2+0x46>
+		{
+			DCF_sync=1; // ustaw bit synchronizacji
+ 150:	81 e0       	ldi	r24, 0x01	; 1
+ 152:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <DCF_sync>
+			DCF_bit=0;	// kolejny bit zapisany do tablicy o indexie 0
+ 156:	10 92 65 00 	sts	0x0065, r1	; 0x800065 <DCF_bit>
+ 15a:	13 c0       	rjmp	.+38     	; 0x182 <__vector_2+0x6c>
+		}
+		else if (!((TCNT1 > 12495) && (TCNT1 < 15827))) // jezeli sygnal 0 nie miesci sie w normach (750ms - 950ms) to zminiejsz zasieg
+ 15c:	8c b5       	in	r24, 0x2c	; 44
+ 15e:	9d b5       	in	r25, 0x2d	; 45
+ 160:	80 3d       	cpi	r24, 0xD0	; 208
+ 162:	90 43       	sbci	r25, 0x30	; 48
+ 164:	28 f0       	brcs	.+10     	; 0x170 <__vector_2+0x5a>
+ 166:	8c b5       	in	r24, 0x2c	; 44
+ 168:	9d b5       	in	r25, 0x2d	; 45
+ 16a:	83 3d       	cpi	r24, 0xD3	; 211
+ 16c:	9d 43       	sbci	r25, 0x3D	; 61
+ 16e:	48 f0       	brcs	.+18     	; 0x182 <__vector_2+0x6c>
+		{
+			if (DCF_zasieg>1)
+ 170:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <DCF_zasieg>
+ 174:	82 30       	cpi	r24, 0x02	; 2
+ 176:	28 f0       	brcs	.+10     	; 0x182 <__vector_2+0x6c>
+			DCF_zasieg--; // zmneijsz zasieg
+ 178:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <DCF_zasieg>
+ 17c:	81 50       	subi	r24, 0x01	; 1
+ 17e:	80 93 67 00 	sts	0x0067, r24	; 0x800067 <DCF_zasieg>
+		}
+		TCNT1=0; // wyzereuj licznik Timera 1
+ 182:	1d bc       	out	0x2d, r1	; 45
+ 184:	1c bc       	out	0x2c, r1	; 44
+		DCF_INT_FALLING; // ustawienie reakcji przerwania na zbocze opadajace
+ 186:	88 e0       	ldi	r24, 0x08	; 8
+ 188:	85 bf       	out	0x35, r24	; 53
+ 18a:	55 c0       	rjmp	.+170    	; 0x236 <__vector_2+0x120>
+	}
+	else
+	{
+		if ((TCNT1 > 833) && (TCNT1 < 2500)) // sprawdŸ czy czas mieœci siê w przedziale 50ms - 150ms
+ 18c:	8c b5       	in	r24, 0x2c	; 44
+ 18e:	9d b5       	in	r25, 0x2d	; 45
+ 190:	82 34       	cpi	r24, 0x42	; 66
+ 192:	93 40       	sbci	r25, 0x03	; 3
+ 194:	f0 f0       	brcs	.+60     	; 0x1d2 <__vector_2+0xbc>
+ 196:	8c b5       	in	r24, 0x2c	; 44
+ 198:	9d b5       	in	r25, 0x2d	; 45
+ 19a:	84 3c       	cpi	r24, 0xC4	; 196
+ 19c:	99 40       	sbci	r25, 0x09	; 9
+ 19e:	c8 f4       	brcc	.+50     	; 0x1d2 <__vector_2+0xbc>
+		{
+			// pobranie bitu o wartoœci 0
+			if (DCF_zasieg<4)
+ 1a0:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <DCF_zasieg>
+ 1a4:	84 30       	cpi	r24, 0x04	; 4
+ 1a6:	28 f4       	brcc	.+10     	; 0x1b2 <__vector_2+0x9c>
+			DCF_zasieg++; //zwiesz zasieg
+ 1a8:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <DCF_zasieg>
+ 1ac:	8f 5f       	subi	r24, 0xFF	; 255
+ 1ae:	80 93 67 00 	sts	0x0067, r24	; 0x800067 <DCF_zasieg>
+
+			if (DCF_sync==1)// jezeli odnaleziono bit synchronizacji to pobierz bit
+ 1b2:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <DCF_sync>
+ 1b6:	81 30       	cpi	r24, 0x01	; 1
+ 1b8:	d1 f5       	brne	.+116    	; 0x22e <__vector_2+0x118>
+			{
+				DCF_dane[DCF_bit]=0; // zapisz bit
+ 1ba:	e0 91 65 00 	lds	r30, 0x0065	; 0x800065 <DCF_bit>
+ 1be:	f0 e0       	ldi	r31, 0x00	; 0
+ 1c0:	e8 59       	subi	r30, 0x98	; 152
+ 1c2:	ff 4f       	sbci	r31, 0xFF	; 255
+ 1c4:	10 82       	st	Z, r1
+				DCF_bit++; // zwieksz index
+ 1c6:	80 91 65 00 	lds	r24, 0x0065	; 0x800065 <DCF_bit>
+ 1ca:	8f 5f       	subi	r24, 0xFF	; 255
+ 1cc:	80 93 65 00 	sts	0x0065, r24	; 0x800065 <DCF_bit>
+ 1d0:	2e c0       	rjmp	.+92     	; 0x22e <__vector_2+0x118>
+			}
+		}
+		else if ((TCNT1 > 2500) && (TCNT1 < 4167)) // jêzeli czas 150ms - 200ms to oznacza bit 1
+ 1d2:	8c b5       	in	r24, 0x2c	; 44
+ 1d4:	9d b5       	in	r25, 0x2d	; 45
+ 1d6:	85 3c       	cpi	r24, 0xC5	; 197
+ 1d8:	99 40       	sbci	r25, 0x09	; 9
+ 1da:	f0 f0       	brcs	.+60     	; 0x218 <__vector_2+0x102>
+ 1dc:	8c b5       	in	r24, 0x2c	; 44
+ 1de:	9d b5       	in	r25, 0x2d	; 45
+ 1e0:	87 34       	cpi	r24, 0x47	; 71
+ 1e2:	90 41       	sbci	r25, 0x10	; 16
+ 1e4:	c8 f4       	brcc	.+50     	; 0x218 <__vector_2+0x102>
+		{
+			if (DCF_zasieg<4)
+ 1e6:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <DCF_zasieg>
+ 1ea:	84 30       	cpi	r24, 0x04	; 4
+ 1ec:	28 f4       	brcc	.+10     	; 0x1f8 <__vector_2+0xe2>
+			DCF_zasieg++; // zwieksz zasieg
+ 1ee:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <DCF_zasieg>
+ 1f2:	8f 5f       	subi	r24, 0xFF	; 255
+ 1f4:	80 93 67 00 	sts	0x0067, r24	; 0x800067 <DCF_zasieg>
+			
+			if (DCF_sync==1)// jezeli odnaleziono bit synchronizacji to pobierz bit
+ 1f8:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <DCF_sync>
+ 1fc:	81 30       	cpi	r24, 0x01	; 1
+ 1fe:	b9 f4       	brne	.+46     	; 0x22e <__vector_2+0x118>
+			{
+				DCF_dane[DCF_bit]=1;// zapisz bit do tablicy o okreslonym indexie DCF_bit
+ 200:	e0 91 65 00 	lds	r30, 0x0065	; 0x800065 <DCF_bit>
+ 204:	f0 e0       	ldi	r31, 0x00	; 0
+ 206:	e8 59       	subi	r30, 0x98	; 152
+ 208:	ff 4f       	sbci	r31, 0xFF	; 255
+ 20a:	80 83       	st	Z, r24
+				DCF_bit++; //zwiêksz index
+ 20c:	80 91 65 00 	lds	r24, 0x0065	; 0x800065 <DCF_bit>
+ 210:	8f 5f       	subi	r24, 0xFF	; 255
+ 212:	80 93 65 00 	sts	0x0065, r24	; 0x800065 <DCF_bit>
+ 216:	0b c0       	rjmp	.+22     	; 0x22e <__vector_2+0x118>
+			}
+		}
+		else // jezeli inny czas to b³ad sygna³u
+		{
+			//usun flage synchronizacji
+			DCF_sync=0;
+ 218:	10 92 64 00 	sts	0x0064, r1	; 0x800064 <DCF_sync>
+			if (DCF_zasieg>1)
+ 21c:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <DCF_zasieg>
+ 220:	82 30       	cpi	r24, 0x02	; 2
+ 222:	28 f0       	brcs	.+10     	; 0x22e <__vector_2+0x118>
+			DCF_zasieg--; // zmneijsz zasieg
+ 224:	80 91 67 00 	lds	r24, 0x0067	; 0x800067 <DCF_zasieg>
+ 228:	81 50       	subi	r24, 0x01	; 1
+ 22a:	80 93 67 00 	sts	0x0067, r24	; 0x800067 <DCF_zasieg>
+
+		}
+		TCNT1=0; // wyzeruj licznik Timera 1
+ 22e:	1d bc       	out	0x2d, r1	; 45
+ 230:	1c bc       	out	0x2c, r1	; 44
+		DCF_INT_RISING; // ustaw reakcje przerwania na zbocze narastaj¹ce
+ 232:	8c e0       	ldi	r24, 0x0C	; 12
+ 234:	85 bf       	out	0x35, r24	; 53
+	}
+
+
+
+}
+ 236:	ff 91       	pop	r31
+ 238:	ef 91       	pop	r30
+ 23a:	9f 91       	pop	r25
+ 23c:	8f 91       	pop	r24
+ 23e:	2f 91       	pop	r18
+ 240:	0f 90       	pop	r0
+ 242:	0f be       	out	0x3f, r0	; 63
+ 244:	0f 90       	pop	r0
+ 246:	1f 90       	pop	r1
+ 248:	18 95       	reti
+
+0000024a <DCF_decode>:
+
+
+uint8_t DCF_decode(DCF_datetime *DCF_dt)
+{
+ 24a:	cf 92       	push	r12
+ 24c:	df 92       	push	r13
+ 24e:	ef 92       	push	r14
+ 250:	ff 92       	push	r15
+ 252:	0f 93       	push	r16
+ 254:	1f 93       	push	r17
+ 256:	cf 93       	push	r28
+ 258:	df 93       	push	r29
+ 25a:	dc 01       	movw	r26, r24
+
+	// potrzebne jest 59 bitów aby zdekodowac wszystkei dane
+	if (DCF_bit<59)
+ 25c:	90 91 65 00 	lds	r25, 0x0065	; 0x800065 <DCF_bit>
+ 260:	9b 33       	cpi	r25, 0x3B	; 59
+ 262:	08 f4       	brcc	.+2      	; 0x266 <DCF_decode+0x1c>
+ 264:	f0 c0       	rjmp	.+480    	; 0x446 <__LOCK_REGION_LENGTH__+0x46>
+		return 0;
+
+  //bit 0 - zawsze 0 oraz bit 20 - zawsze 1			
+	if ((DCF_dane[0]!=0)||(DCF_dane[20]!=1)) //jezeli bity niepoprawne to zakoncz
+ 266:	80 91 68 00 	lds	r24, 0x0068	; 0x800068 <DCF_dane>
+ 26a:	81 11       	cpse	r24, r1
+ 26c:	ee c0       	rjmp	.+476    	; 0x44a <__LOCK_REGION_LENGTH__+0x4a>
+ 26e:	90 91 7c 00 	lds	r25, 0x007C	; 0x80007c <DCF_dane+0x14>
+ 272:	91 30       	cpi	r25, 0x01	; 1
+ 274:	09 f0       	breq	.+2      	; 0x278 <DCF_decode+0x2e>
+ 276:	ee c0       	rjmp	.+476    	; 0x454 <__LOCK_REGION_LENGTH__+0x54>
+ 278:	25 e1       	ldi	r18, 0x15	; 21
+ 27a:	30 e0       	ldi	r19, 0x00	; 0
+ 27c:	90 e0       	ldi	r25, 0x00	; 0
+		return 0;
+
+	//bity 21 - 27 - minuty bit 28 - bit parzystosci
+	uint8_t DCF_parzystosc_m=0; 
+	for (int a=21; a<29; a++) //sumowanie bitow
+		DCF_parzystosc_m+=DCF_dane[a];
+ 27e:	f9 01       	movw	r30, r18
+ 280:	e8 59       	subi	r30, 0x98	; 152
+ 282:	ff 4f       	sbci	r31, 0xFF	; 255
+ 284:	40 81       	ld	r20, Z
+ 286:	94 0f       	add	r25, r20
+	if ((DCF_dane[0]!=0)||(DCF_dane[20]!=1)) //jezeli bity niepoprawne to zakoncz
+		return 0;
+
+	//bity 21 - 27 - minuty bit 28 - bit parzystosci
+	uint8_t DCF_parzystosc_m=0; 
+	for (int a=21; a<29; a++) //sumowanie bitow
+ 288:	2f 5f       	subi	r18, 0xFF	; 255
+ 28a:	3f 4f       	sbci	r19, 0xFF	; 255
+ 28c:	2d 31       	cpi	r18, 0x1D	; 29
+ 28e:	31 05       	cpc	r19, r1
+ 290:	b1 f7       	brne	.-20     	; 0x27e <DCF_decode+0x34>
+		DCF_parzystosc_m+=DCF_dane[a];
+
+  if ((DCF_parzystosc_m%2)!=0) // jezeli suma bitow jest nieparzysta to zakoncz
+ 292:	49 2f       	mov	r20, r25
+ 294:	41 70       	andi	r20, 0x01	; 1
+ 296:	90 fd       	sbrc	r25, 0
+ 298:	dd c0       	rjmp	.+442    	; 0x454 <__LOCK_REGION_LENGTH__+0x54>
+ 29a:	2d e1       	ldi	r18, 0x1D	; 29
+ 29c:	30 e0       	ldi	r19, 0x00	; 0
+ 29e:	80 e0       	ldi	r24, 0x00	; 0
+		return 0;
+
+	//bity 29 - 34 - godziny 35 - bit parzystosci 
+	uint8_t DCF_parzystosc_h=0;
+	for (int a=29; a<36; a++) 
+		DCF_parzystosc_h+=DCF_dane[a];	
+ 2a0:	f9 01       	movw	r30, r18
+ 2a2:	e8 59       	subi	r30, 0x98	; 152
+ 2a4:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2a6:	90 81       	ld	r25, Z
+ 2a8:	89 0f       	add	r24, r25
+  if ((DCF_parzystosc_m%2)!=0) // jezeli suma bitow jest nieparzysta to zakoncz
+		return 0;
+
+	//bity 29 - 34 - godziny 35 - bit parzystosci 
+	uint8_t DCF_parzystosc_h=0;
+	for (int a=29; a<36; a++) 
+ 2aa:	2f 5f       	subi	r18, 0xFF	; 255
+ 2ac:	3f 4f       	sbci	r19, 0xFF	; 255
+ 2ae:	24 32       	cpi	r18, 0x24	; 36
+ 2b0:	31 05       	cpc	r19, r1
+ 2b2:	b1 f7       	brne	.-20     	; 0x2a0 <DCF_decode+0x56>
+		DCF_parzystosc_h+=DCF_dane[a];	
+
+ 	if ((DCF_parzystosc_h%2)!=0) // jezeli suma bitow jest nieparzysta to zakoncz
+ 2b4:	58 2f       	mov	r21, r24
+ 2b6:	51 70       	andi	r21, 0x01	; 1
+ 2b8:	80 fd       	sbrc	r24, 0
+ 2ba:	c9 c0       	rjmp	.+402    	; 0x44e <__LOCK_REGION_LENGTH__+0x4e>
+ 2bc:	24 e2       	ldi	r18, 0x24	; 36
+ 2be:	30 e0       	ldi	r19, 0x00	; 0
+ 2c0:	90 e0       	ldi	r25, 0x00	; 0
+		return 0;
+
+	//bity 36 - 57 - data; 58 - bit parzystosci 
+	uint8_t DCF_parzystosc_data=0;
+	for (int a=36; a<59; a++) 
+			DCF_parzystosc_data+=DCF_dane[a];	
+ 2c2:	f9 01       	movw	r30, r18
+ 2c4:	e8 59       	subi	r30, 0x98	; 152
+ 2c6:	ff 4f       	sbci	r31, 0xFF	; 255
+ 2c8:	40 81       	ld	r20, Z
+ 2ca:	94 0f       	add	r25, r20
+ 	if ((DCF_parzystosc_h%2)!=0) // jezeli suma bitow jest nieparzysta to zakoncz
+		return 0;
+
+	//bity 36 - 57 - data; 58 - bit parzystosci 
+	uint8_t DCF_parzystosc_data=0;
+	for (int a=36; a<59; a++) 
+ 2cc:	2f 5f       	subi	r18, 0xFF	; 255
+ 2ce:	3f 4f       	sbci	r19, 0xFF	; 255
+ 2d0:	2b 33       	cpi	r18, 0x3B	; 59
+ 2d2:	31 05       	cpc	r19, r1
+ 2d4:	b1 f7       	brne	.-20     	; 0x2c2 <DCF_decode+0x78>
+			DCF_parzystosc_data+=DCF_dane[a];	
+
+	if ((DCF_parzystosc_data%2)!=0) // jezeli suma bitow jest nieparzysta to zakoncz
+ 2d6:	89 2f       	mov	r24, r25
+ 2d8:	81 70       	andi	r24, 0x01	; 1
+ 2da:	90 fd       	sbrc	r25, 0
+ 2dc:	ba c0       	rjmp	.+372    	; 0x452 <__LOCK_REGION_LENGTH__+0x52>
+		return 0;
+			
+  // jezeli bity parzystosci zosta³y sprawdzone mozna dekodowaæ sygna³
+	
+	//dekodowanie minut 
+	DCF_dt->min	= DCF_dane[21]
+ 2de:	e8 e6       	ldi	r30, 0x68	; 104
+ 2e0:	f0 e0       	ldi	r31, 0x00	; 0
+ 2e2:	75 89       	ldd	r23, Z+21	; 0x15
+								+ 2*DCF_dane[22]
+								+ 4*DCF_dane[23]
+								+ 8*DCF_dane[24]
+								+ 10*DCF_dane[25]
+								+ 20*DCF_dane[26]
+ 2e4:	62 8d       	ldd	r22, Z+26	; 0x1a
+								+ 40*DCF_dane[27];
+ 2e6:	53 8d       	ldd	r21, Z+27	; 0x1b
+  // jezeli bity parzystosci zosta³y sprawdzone mozna dekodowaæ sygna³
+	
+	//dekodowanie minut 
+	DCF_dt->min	= DCF_dane[21]
+								+ 2*DCF_dane[22]
+								+ 4*DCF_dane[23]
+ 2e8:	27 89       	ldd	r18, Z+23	; 0x17
+								+ 8*DCF_dane[24]
+ 2ea:	90 8d       	ldd	r25, Z+24	; 0x18
+								+ 10*DCF_dane[25]
+ 2ec:	31 8d       	ldd	r19, Z+25	; 0x19
+			
+  // jezeli bity parzystosci zosta³y sprawdzone mozna dekodowaæ sygna³
+	
+	//dekodowanie minut 
+	DCF_dt->min	= DCF_dane[21]
+								+ 2*DCF_dane[22]
+ 2ee:	d6 89       	ldd	r29, Z+22	; 0x16
+		return 0;
+			
+  // jezeli bity parzystosci zosta³y sprawdzone mozna dekodowaæ sygna³
+	
+	//dekodowanie minut 
+	DCF_dt->min	= DCF_dane[21]
+ 2f0:	66 0f       	add	r22, r22
+ 2f2:	46 2f       	mov	r20, r22
+ 2f4:	44 0f       	add	r20, r20
+ 2f6:	44 0f       	add	r20, r20
+ 2f8:	46 0f       	add	r20, r22
+ 2fa:	55 0f       	add	r21, r21
+ 2fc:	55 0f       	add	r21, r21
+ 2fe:	65 2f       	mov	r22, r21
+ 300:	66 0f       	add	r22, r22
+ 302:	66 0f       	add	r22, r22
+ 304:	56 0f       	add	r21, r22
+ 306:	45 0f       	add	r20, r21
+ 308:	4d 0f       	add	r20, r29
+ 30a:	d3 2f       	mov	r29, r19
+ 30c:	dd 0f       	add	r29, r29
+ 30e:	dd 0f       	add	r29, r29
+ 310:	3d 0f       	add	r19, r29
+ 312:	d4 2f       	mov	r29, r20
+ 314:	d3 0f       	add	r29, r19
+ 316:	99 0f       	add	r25, r25
+ 318:	92 0f       	add	r25, r18
+ 31a:	99 0f       	add	r25, r25
+ 31c:	d9 0f       	add	r29, r25
+ 31e:	dd 0f       	add	r29, r29
+ 320:	d7 0f       	add	r29, r23
+ 322:	dc 93       	st	X, r29
+								+ 10*DCF_dane[25]
+								+ 20*DCF_dane[26]
+								+ 40*DCF_dane[27];
+	
+	//dekodowanie godzin
+  DCF_dt->h = DCF_dane[29]
+ 324:	65 8d       	ldd	r22, Z+29	; 0x1d
+								+ 2*DCF_dane[30]
+								+ 4*DCF_dane[31]
+								+ 8*DCF_dane[32]
+								+ 10*DCF_dane[33]
+								+ 20*DCF_dane[34];
+ 326:	42 a1       	ldd	r20, Z+34	; 0x22
+								+ 40*DCF_dane[27];
+	
+	//dekodowanie godzin
+  DCF_dt->h = DCF_dane[29]
+								+ 2*DCF_dane[30]
+								+ 4*DCF_dane[31]
+ 328:	27 8d       	ldd	r18, Z+31	; 0x1f
+								+ 8*DCF_dane[32]
+ 32a:	90 a1       	ldd	r25, Z+32	; 0x20
+								+ 10*DCF_dane[33]
+ 32c:	31 a1       	ldd	r19, Z+33	; 0x21
+								+ 20*DCF_dane[26]
+								+ 40*DCF_dane[27];
+	
+	//dekodowanie godzin
+  DCF_dt->h = DCF_dane[29]
+								+ 2*DCF_dane[30]
+ 32e:	c6 8d       	ldd	r28, Z+30	; 0x1e
+								+ 10*DCF_dane[25]
+								+ 20*DCF_dane[26]
+								+ 40*DCF_dane[27];
+	
+	//dekodowanie godzin
+  DCF_dt->h = DCF_dane[29]
+ 330:	44 0f       	add	r20, r20
+ 332:	54 2f       	mov	r21, r20
+ 334:	55 0f       	add	r21, r21
+ 336:	55 0f       	add	r21, r21
+ 338:	45 0f       	add	r20, r21
+ 33a:	53 2f       	mov	r21, r19
+ 33c:	55 0f       	add	r21, r21
+ 33e:	55 0f       	add	r21, r21
+ 340:	35 0f       	add	r19, r21
+ 342:	34 0f       	add	r19, r20
+ 344:	c3 0f       	add	r28, r19
+ 346:	99 0f       	add	r25, r25
+ 348:	92 0f       	add	r25, r18
+ 34a:	99 0f       	add	r25, r25
+ 34c:	c9 0f       	add	r28, r25
+ 34e:	cc 0f       	add	r28, r28
+ 350:	c6 0f       	add	r28, r22
+ 352:	11 96       	adiw	r26, 0x01	; 1
+ 354:	cc 93       	st	X, r28
+ 356:	11 97       	sbiw	r26, 0x01	; 1
+								+ 8*DCF_dane[32]
+								+ 10*DCF_dane[33]
+								+ 20*DCF_dane[34];
+
+	//dekodowanie dnia miesiaca
+	DCF_dt->day	= DCF_dane[36]
+ 358:	64 a1       	ldd	r22, Z+36	; 0x24
+								+ 2*DCF_dane[37]
+							  + 4*DCF_dane[38]
+								+ 8*DCF_dane[39]
+								+ 10*DCF_dane[40]
+								+ 20*DCF_dane[41];
+ 35a:	41 a5       	ldd	r20, Z+41	; 0x29
+								+ 20*DCF_dane[34];
+
+	//dekodowanie dnia miesiaca
+	DCF_dt->day	= DCF_dane[36]
+								+ 2*DCF_dane[37]
+							  + 4*DCF_dane[38]
+ 35c:	26 a1       	ldd	r18, Z+38	; 0x26
+								+ 8*DCF_dane[39]
+ 35e:	97 a1       	ldd	r25, Z+39	; 0x27
+								+ 10*DCF_dane[40]
+ 360:	30 a5       	ldd	r19, Z+40	; 0x28
+								+ 10*DCF_dane[33]
+								+ 20*DCF_dane[34];
+
+	//dekodowanie dnia miesiaca
+	DCF_dt->day	= DCF_dane[36]
+								+ 2*DCF_dane[37]
+ 362:	05 a1       	ldd	r16, Z+37	; 0x25
+								+ 8*DCF_dane[32]
+								+ 10*DCF_dane[33]
+								+ 20*DCF_dane[34];
+
+	//dekodowanie dnia miesiaca
+	DCF_dt->day	= DCF_dane[36]
+ 364:	44 0f       	add	r20, r20
+ 366:	54 2f       	mov	r21, r20
+ 368:	55 0f       	add	r21, r21
+ 36a:	55 0f       	add	r21, r21
+ 36c:	45 0f       	add	r20, r21
+ 36e:	53 2f       	mov	r21, r19
+ 370:	55 0f       	add	r21, r21
+ 372:	55 0f       	add	r21, r21
+ 374:	35 0f       	add	r19, r21
+ 376:	34 0f       	add	r19, r20
+ 378:	03 0f       	add	r16, r19
+ 37a:	99 0f       	add	r25, r25
+ 37c:	92 0f       	add	r25, r18
+ 37e:	99 0f       	add	r25, r25
+ 380:	09 0f       	add	r16, r25
+ 382:	00 0f       	add	r16, r16
+ 384:	06 0f       	add	r16, r22
+ 386:	13 96       	adiw	r26, 0x03	; 3
+ 388:	0c 93       	st	X, r16
+ 38a:	13 97       	sbiw	r26, 0x03	; 3
+								+ 8*DCF_dane[39]
+								+ 10*DCF_dane[40]
+								+ 20*DCF_dane[41];
+
+	//dekodowanie miesiaca
+	DCF_dt->month	= DCF_dane[45]
+ 38c:	55 a5       	ldd	r21, Z+45	; 0x2d
+								+ 2*DCF_dane[46]
+								+ 4*DCF_dane[47]
+ 38e:	47 a5       	ldd	r20, Z+47	; 0x2f
+								+ 8*DCF_dane[48]
+ 390:	30 a9       	ldd	r19, Z+48	; 0x30
+								+ 10*DCF_dane[49];
+ 392:	91 a9       	ldd	r25, Z+49	; 0x31
+								+ 10*DCF_dane[40]
+								+ 20*DCF_dane[41];
+
+	//dekodowanie miesiaca
+	DCF_dt->month	= DCF_dane[45]
+								+ 2*DCF_dane[46]
+ 394:	26 a5       	ldd	r18, Z+46	; 0x2e
+								+ 8*DCF_dane[39]
+								+ 10*DCF_dane[40]
+								+ 20*DCF_dane[41];
+
+	//dekodowanie miesiaca
+	DCF_dt->month	= DCF_dane[45]
+ 396:	33 0f       	add	r19, r19
+ 398:	34 0f       	add	r19, r20
+ 39a:	33 0f       	add	r19, r19
+ 39c:	19 2f       	mov	r17, r25
+ 39e:	11 0f       	add	r17, r17
+ 3a0:	11 0f       	add	r17, r17
+ 3a2:	91 0f       	add	r25, r17
+ 3a4:	92 0f       	add	r25, r18
+ 3a6:	13 2f       	mov	r17, r19
+ 3a8:	19 0f       	add	r17, r25
+ 3aa:	11 0f       	add	r17, r17
+ 3ac:	15 0f       	add	r17, r21
+ 3ae:	12 96       	adiw	r26, 0x02	; 2
+ 3b0:	1c 93       	st	X, r17
+ 3b2:	12 97       	sbiw	r26, 0x02	; 2
+								+ 4*DCF_dane[47]
+								+ 8*DCF_dane[48]
+								+ 10*DCF_dane[49];
+
+	//dekodowanie roku
+	DCF_dt->year = DCF_dane[50] 
+ 3b4:	62 a9       	ldd	r22, Z+50	; 0x32
+								+ 2 * DCF_dane[51]
+ 3b6:	23 a9       	ldd	r18, Z+51	; 0x33
+                + 4 * DCF_dane[52]
+ 3b8:	54 a9       	ldd	r21, Z+52	; 0x34
+                + 8 * DCF_dane[53]
+ 3ba:	45 a9       	ldd	r20, Z+53	; 0x35
+                + 10 * DCF_dane[54]
+ 3bc:	96 a9       	ldd	r25, Z+54	; 0x36
+                + 20 * DCF_dane[55]
+ 3be:	e7 a8       	ldd	r14, Z+55	; 0x37
+                + 40 * DCF_dane[56]
+ 3c0:	f0 ac       	ldd	r15, Z+56	; 0x38
+                + 80 * DCF_dane[57]
+ 3c2:	e1 ad       	ldd	r30, Z+57	; 0x39
+								+ 4*DCF_dane[47]
+								+ 8*DCF_dane[48]
+								+ 10*DCF_dane[49];
+
+	//dekodowanie roku
+	DCF_dt->year = DCF_dane[50] 
+ 3c4:	30 e0       	ldi	r19, 0x00	; 0
+ 3c6:	22 0f       	add	r18, r18
+ 3c8:	33 1f       	adc	r19, r19
+ 3ca:	26 0f       	add	r18, r22
+ 3cc:	31 1d       	adc	r19, r1
+ 3ce:	64 e0       	ldi	r22, 0x04	; 4
+ 3d0:	56 9f       	mul	r21, r22
+ 3d2:	20 0d       	add	r18, r0
+ 3d4:	31 1d       	adc	r19, r1
+ 3d6:	11 24       	eor	r1, r1
+ 3d8:	b9 01       	movw	r22, r18
+ 3da:	58 e0       	ldi	r21, 0x08	; 8
+ 3dc:	45 9f       	mul	r20, r21
+ 3de:	60 0d       	add	r22, r0
+ 3e0:	71 1d       	adc	r23, r1
+ 3e2:	11 24       	eor	r1, r1
+ 3e4:	29 2f       	mov	r18, r25
+ 3e6:	30 e0       	ldi	r19, 0x00	; 0
+ 3e8:	69 01       	movw	r12, r18
+ 3ea:	cc 0c       	add	r12, r12
+ 3ec:	dd 1c       	adc	r13, r13
+ 3ee:	a9 01       	movw	r20, r18
+ 3f0:	44 0f       	add	r20, r20
+ 3f2:	55 1f       	adc	r21, r21
+ 3f4:	44 0f       	add	r20, r20
+ 3f6:	55 1f       	adc	r21, r21
+ 3f8:	44 0f       	add	r20, r20
+ 3fa:	55 1f       	adc	r21, r21
+ 3fc:	96 01       	movw	r18, r12
+ 3fe:	24 0f       	add	r18, r20
+ 400:	35 1f       	adc	r19, r21
+ 402:	26 0f       	add	r18, r22
+ 404:	37 1f       	adc	r19, r23
+ 406:	64 e1       	ldi	r22, 0x14	; 20
+ 408:	e6 9e       	mul	r14, r22
+ 40a:	20 0d       	add	r18, r0
+ 40c:	31 1d       	adc	r19, r1
+ 40e:	11 24       	eor	r1, r1
+ 410:	98 e2       	ldi	r25, 0x28	; 40
+ 412:	f9 9e       	mul	r15, r25
+ 414:	20 0d       	add	r18, r0
+ 416:	31 1d       	adc	r19, r1
+ 418:	11 24       	eor	r1, r1
+ 41a:	50 e5       	ldi	r21, 0x50	; 80
+ 41c:	e5 9f       	mul	r30, r21
+ 41e:	20 0d       	add	r18, r0
+ 420:	31 1d       	adc	r19, r1
+ 422:	11 24       	eor	r1, r1
+ 424:	20 53       	subi	r18, 0x30	; 48
+ 426:	38 4f       	sbci	r19, 0xF8	; 248
+ 428:	15 96       	adiw	r26, 0x05	; 5
+ 42a:	3c 93       	st	X, r19
+ 42c:	2e 93       	st	-X, r18
+ 42e:	14 97       	sbiw	r26, 0x04	; 4
+                + 80 * DCF_dane[57]
+								+ 2000;
+
+  // sprawdzenie czy odczytane dane sa wiarygodne 
+	//godzina nie wieksza niz 24 minuty nei wieksze niz 60, miesiac nei wiekszy niz 12, dzien nie wiekszy niz 31
+  if ((DCF_dt->h>24)||(DCF_dt->min>60)||(DCF_dt->month>12)||(DCF_dt->day>31))
+ 430:	c9 31       	cpi	r28, 0x19	; 25
+ 432:	80 f4       	brcc	.+32     	; 0x454 <__LOCK_REGION_LENGTH__+0x54>
+ 434:	dd 33       	cpi	r29, 0x3D	; 61
+ 436:	70 f4       	brcc	.+28     	; 0x454 <__LOCK_REGION_LENGTH__+0x54>
+ 438:	1d 30       	cpi	r17, 0x0D	; 13
+ 43a:	60 f4       	brcc	.+24     	; 0x454 <__LOCK_REGION_LENGTH__+0x54>
+uint8_t DCF_decode(DCF_datetime *DCF_dt)
+{
+
+	// potrzebne jest 59 bitów aby zdekodowac wszystkei dane
+	if (DCF_bit<59)
+		return 0;
+ 43c:	81 e0       	ldi	r24, 0x01	; 1
+ 43e:	00 32       	cpi	r16, 0x20	; 32
+ 440:	48 f0       	brcs	.+18     	; 0x454 <__LOCK_REGION_LENGTH__+0x54>
+ 442:	80 e0       	ldi	r24, 0x00	; 0
+ 444:	07 c0       	rjmp	.+14     	; 0x454 <__LOCK_REGION_LENGTH__+0x54>
+ 446:	80 e0       	ldi	r24, 0x00	; 0
+ 448:	05 c0       	rjmp	.+10     	; 0x454 <__LOCK_REGION_LENGTH__+0x54>
+
+  //bit 0 - zawsze 0 oraz bit 20 - zawsze 1			
+	if ((DCF_dane[0]!=0)||(DCF_dane[20]!=1)) //jezeli bity niepoprawne to zakoncz
+		return 0;
+ 44a:	80 e0       	ldi	r24, 0x00	; 0
+ 44c:	03 c0       	rjmp	.+6      	; 0x454 <__LOCK_REGION_LENGTH__+0x54>
+	uint8_t DCF_parzystosc_h=0;
+	for (int a=29; a<36; a++) 
+		DCF_parzystosc_h+=DCF_dane[a];	
+
+ 	if ((DCF_parzystosc_h%2)!=0) // jezeli suma bitow jest nieparzysta to zakoncz
+		return 0;
+ 44e:	84 2f       	mov	r24, r20
+ 450:	01 c0       	rjmp	.+2      	; 0x454 <__LOCK_REGION_LENGTH__+0x54>
+	uint8_t DCF_parzystosc_data=0;
+	for (int a=36; a<59; a++) 
+			DCF_parzystosc_data+=DCF_dane[a];	
+
+	if ((DCF_parzystosc_data%2)!=0) // jezeli suma bitow jest nieparzysta to zakoncz
+		return 0;
+ 452:	85 2f       	mov	r24, r21
+  if ((DCF_dt->h>24)||(DCF_dt->min>60)||(DCF_dt->month>12)||(DCF_dt->day>31))
+		return 0;
+		      
+	// zakonczenie sukcesem  
+	return 1;
+} 
+ 454:	df 91       	pop	r29
+ 456:	cf 91       	pop	r28
+ 458:	1f 91       	pop	r17
+ 45a:	0f 91       	pop	r16
+ 45c:	ff 90       	pop	r15
+ 45e:	ef 90       	pop	r14
+ 460:	df 90       	pop	r13
+ 462:	cf 90       	pop	r12
+ 464:	08 95       	ret
+
+00000466 <digits>:
+		}
+
+		}
+
+void digits(int digit){
+	switch(digit)
+ 466:	8a 30       	cpi	r24, 0x0A	; 10
+ 468:	91 05       	cpc	r25, r1
+ 46a:	10 f5       	brcc	.+68     	; 0x4b0 <digits+0x4a>
+ 46c:	fc 01       	movw	r30, r24
+ 46e:	e6 5d       	subi	r30, 0xD6	; 214
+ 470:	ff 4f       	sbci	r31, 0xFF	; 255
+ 472:	0c 94 ce 05 	jmp	0xb9c	; 0xb9c <__tablejump2__>
+	{
+		case 0:
+		{
+		PORTC = (1<<PC6);
+ 476:	80 e4       	ldi	r24, 0x40	; 64
+ 478:	85 bb       	out	0x15, r24	; 21
+		break;
+ 47a:	08 95       	ret
+		}
+		case 1:
+		{
+		PORTC = (1<<PC7);
+ 47c:	80 e8       	ldi	r24, 0x80	; 128
+ 47e:	85 bb       	out	0x15, r24	; 21
+		break;
+ 480:	08 95       	ret
+		}
+		case 2:
+		{
+		PORTA = (1<<PA7);
+ 482:	80 e8       	ldi	r24, 0x80	; 128
+ 484:	8b bb       	out	0x1b, r24	; 27
+		break;
+ 486:	08 95       	ret
+		}
+		case 3:
+		{
+		PORTA = (1<<PA6);
+ 488:	80 e4       	ldi	r24, 0x40	; 64
+ 48a:	8b bb       	out	0x1b, r24	; 27
+		break;
+ 48c:	08 95       	ret
+		}
+		case 4:
+		{
+		PORTA = (1<<PA5);
+ 48e:	80 e2       	ldi	r24, 0x20	; 32
+ 490:	8b bb       	out	0x1b, r24	; 27
+		break;
+ 492:	08 95       	ret
+		}
+		case 5:
+		{
+		PORTA = (1<<PA4);
+ 494:	80 e1       	ldi	r24, 0x10	; 16
+ 496:	8b bb       	out	0x1b, r24	; 27
+		break;
+ 498:	08 95       	ret
+		}
+		case 6:
+		{
+		PORTA = (1<<PA3);
+ 49a:	88 e0       	ldi	r24, 0x08	; 8
+ 49c:	8b bb       	out	0x1b, r24	; 27
+		break;
+ 49e:	08 95       	ret
+		}
+		case 7:
+		{
+		PORTA = (1<<PA2);
+ 4a0:	84 e0       	ldi	r24, 0x04	; 4
+ 4a2:	8b bb       	out	0x1b, r24	; 27
+		break;
+ 4a4:	08 95       	ret
+		}
+		case 8:
+		{
+		PORTA = (1<<PA1);
+ 4a6:	82 e0       	ldi	r24, 0x02	; 2
+ 4a8:	8b bb       	out	0x1b, r24	; 27
+		break;
+ 4aa:	08 95       	ret
+		}
+		case 9:
+		{
+		PORTA = (1<<PA0);
+ 4ac:	81 e0       	ldi	r24, 0x01	; 1
+ 4ae:	8b bb       	out	0x1b, r24	; 27
+ 4b0:	08 95       	ret
+
+000004b2 <clear_ports>:
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 4b2:	89 ef       	ldi	r24, 0xF9	; 249
+ 4b4:	90 e0       	ldi	r25, 0x00	; 0
+ 4b6:	01 97       	sbiw	r24, 0x01	; 1
+ 4b8:	f1 f7       	brne	.-4      	; 0x4b6 <clear_ports+0x4>
+ 4ba:	00 c0       	rjmp	.+0      	; 0x4bc <clear_ports+0xa>
+ 4bc:	00 00       	nop
+		}
+	}
+}
+void clear_ports(){
+	_delay_ms(1);
+	PORTA = 0x00;
+ 4be:	1b ba       	out	0x1b, r1	; 27
+	PORTC = 0x00;
+ 4c0:	15 ba       	out	0x15, r1	; 21
+	PORTB = 0x00;
+ 4c2:	18 ba       	out	0x18, r1	; 24
+ 4c4:	08 95       	ret
+
+000004c6 <main>:
+uint8_t wysw=0;
+
+void digits(int digit);
+void clear_ports();
+int main(void)
+{
+ 4c6:	cf 93       	push	r28
+ 4c8:	df 93       	push	r29
+ 4ca:	cd b7       	in	r28, 0x3d	; 61
+ 4cc:	de b7       	in	r29, 0x3e	; 62
+ 4ce:	28 97       	sbiw	r28, 0x08	; 8
+ 4d0:	0f b6       	in	r0, 0x3f	; 63
+ 4d2:	f8 94       	cli
+ 4d4:	de bf       	out	0x3e, r29	; 62
+ 4d6:	0f be       	out	0x3f, r0	; 63
+ 4d8:	cd bf       	out	0x3d, r28	; 61
+	DDRB = (1<<PB7)|(1<<PB6)|(1<<PB5)|(1<<PB4)|(1<<PB3)|(1<<PB2);
+ 4da:	8c ef       	ldi	r24, 0xFC	; 252
+ 4dc:	87 bb       	out	0x17, r24	; 23
+	DDRC &= (0<<PC0)|(1<<PC6)|(1<<PC7)|~(1 << PC5);
+ 4de:	a5 98       	cbi	0x14, 5	; 20
+	//DDRC = 0xFF;
+	DDRD &=~ (1<<PD3);
+ 4e0:	8b 98       	cbi	0x11, 3	; 17
+	DDRA = 0xFF;
+ 4e2:	8f ef       	ldi	r24, 0xFF	; 255
+ 4e4:	8a bb       	out	0x1a, r24	; 26
+	PORTC |= (1<<PC5);
+ 4e6:	ad 9a       	sbi	0x15, 5	; 21
+	
+	PCF_Init(1);
+ 4e8:	81 e0       	ldi	r24, 0x01	; 1
+ 4ea:	0e 94 0b 04 	call	0x816	; 0x816 <PCF_Init>
+	DCF_Initalize();
+ 4ee:	0e 94 57 00 	call	0xae	; 0xae <DCF_Initalize>
+	PCF_SetTimer(PCF_TIMER_DISABLED, 0);
+ 4f2:	60 e0       	ldi	r22, 0x00	; 0
+ 4f4:	83 e0       	ldi	r24, 0x03	; 3
+ 4f6:	0e 94 2a 04 	call	0x854	; 0x854 <PCF_SetTimer>
+
+	PCF_DateTime dateTime;
+	dateTime.second = 0;
+ 4fa:	19 82       	std	Y+1, r1	; 0x01
+	dateTime.minute = 23;
+ 4fc:	87 e1       	ldi	r24, 0x17	; 23
+ 4fe:	8a 83       	std	Y+2, r24	; 0x02
+	dateTime.hour = 20;
+ 500:	84 e1       	ldi	r24, 0x14	; 20
+ 502:	8b 83       	std	Y+3, r24	; 0x03
+	dateTime.day = 29;
+ 504:	8d e1       	ldi	r24, 0x1D	; 29
+ 506:	8c 83       	std	Y+4, r24	; 0x04
+	dateTime.weekday = 7;
+ 508:	87 e0       	ldi	r24, 0x07	; 7
+ 50a:	8d 83       	std	Y+5, r24	; 0x05
+	dateTime.month = 10;
+ 50c:	8a e0       	ldi	r24, 0x0A	; 10
+ 50e:	8e 83       	std	Y+6, r24	; 0x06
+	dateTime.year = 2023;
+ 510:	87 ee       	ldi	r24, 0xE7	; 231
+ 512:	97 e0       	ldi	r25, 0x07	; 7
+ 514:	98 87       	std	Y+8, r25	; 0x08
+ 516:	8f 83       	std	Y+7, r24	; 0x07
+	PCF_SetDateTime(&dateTime);
+ 518:	ce 01       	movw	r24, r28
+ 51a:	01 96       	adiw	r24, 0x01	; 1
+ 51c:	0e 94 45 04 	call	0x88a	; 0x88a <PCF_SetDateTime>
+	DCF_ON;
+ 520:	c0 98       	cbi	0x18, 0	; 24
+		
+		if (godzina == 1) DCF_ON;
+		
+		
+		// Wy?wietlanie jedno?ci sekund:
+		temp_value = sekundy %10;
+ 522:	1d ec       	ldi	r17, 0xCD	; 205
+
+		PORTB = (1<<PB2);
+ 524:	68 94       	set
+ 526:	bb 24       	eor	r11, r11
+ 528:	b2 f8       	bld	r11, 2
+		// Wy?wietlanie dziesi?tek sekund:
+		sekundy = sekundy/10;
+		temp_value = sekundy%10;
+		
+		PORTA = 0x00;
+		PORTB = (1<<PB3);
+ 52a:	68 94       	set
+ 52c:	cc 24       	eor	r12, r12
+ 52e:	c3 f8       	bld	r12, 3
+		clear_ports();
+		// Wy?wietlanie jedno?ci minut:
+		temp_value = minuty%10;
+		
+		PORTA = 0x00;
+		PORTB = (1<<PB4);
+ 530:	68 94       	set
+ 532:	dd 24       	eor	r13, r13
+ 534:	d4 f8       	bld	r13, 4
+		// Wy?wietlanie dziesi?tek minut:
+		minuty = minuty/10;
+		temp_value = minuty%10;
+
+		PORTA = 0x00;
+		PORTB = (1<<PB5);
+ 536:	68 94       	set
+ 538:	ee 24       	eor	r14, r14
+ 53a:	e5 f8       	bld	r14, 5
+		clear_ports();
+		// Wy?wietlanie jedno?ci godzin:
+		temp_value = godzina%10;
+
+		PORTA = 0x00;
+		PORTB = (1<<PB6);
+ 53c:	68 94       	set
+ 53e:	ff 24       	eor	r15, r15
+ 540:	f6 f8       	bld	r15, 6
+		// Wy?wietlanie dziesi?tek godzin:
+		godzina = godzina/10;
+		temp_value = godzina%10;
+
+		PORTA = 0x00;
+		PORTB = (1<<PB7);
+ 542:	00 e8       	ldi	r16, 0x80	; 128
+	dateTime.year = 2023;
+	PCF_SetDateTime(&dateTime);
+	DCF_ON;
+	while(1)
+	{
+		if(DCF_sync == 1)
+ 544:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <DCF_sync>
+ 548:	81 30       	cpi	r24, 0x01	; 1
+ 54a:	e1 f4       	brne	.+56     	; 0x584 <main+0xbe>
+		{
+			if (DCF_decode(&DCF_dekode)!=0)
+ 54c:	8f ea       	ldi	r24, 0xAF	; 175
+ 54e:	90 e0       	ldi	r25, 0x00	; 0
+ 550:	0e 94 25 01 	call	0x24a	; 0x24a <DCF_decode>
+ 554:	88 23       	and	r24, r24
+ 556:	b1 f0       	breq	.+44     	; 0x584 <main+0xbe>
+			{
+				m=DCF_dekode.min;
+ 558:	ef ea       	ldi	r30, 0xAF	; 175
+ 55a:	f0 e0       	ldi	r31, 0x00	; 0
+ 55c:	80 81       	ld	r24, Z
+ 55e:	80 93 ae 00 	sts	0x00AE, r24	; 0x8000ae <m>
+				h=DCF_dekode.h;
+ 562:	81 81       	ldd	r24, Z+1	; 0x01
+ 564:	80 93 ad 00 	sts	0x00AD, r24	; 0x8000ad <h>
+				
+				DCF_OFF;
+ 568:	c0 9a       	sbi	0x18, 0	; 24
+				DCF_sync=0;
+ 56a:	10 92 64 00 	sts	0x0064, r1	; 0x800064 <DCF_sync>
+				//PCF_DateTime dataTime;
+				dateTime.second = 0;
+ 56e:	19 82       	std	Y+1, r1	; 0x01
+				dateTime.minute = m;
+ 570:	80 91 ae 00 	lds	r24, 0x00AE	; 0x8000ae <m>
+ 574:	8a 83       	std	Y+2, r24	; 0x02
+				dateTime.hour = h;
+ 576:	80 91 ad 00 	lds	r24, 0x00AD	; 0x8000ad <h>
+ 57a:	8b 83       	std	Y+3, r24	; 0x03
+				PCF_SetDateTime(&pcfDateTime);
+ 57c:	84 ea       	ldi	r24, 0xA4	; 164
+ 57e:	90 e0       	ldi	r25, 0x00	; 0
+ 580:	0e 94 45 04 	call	0x88a	; 0x88a <PCF_SetDateTime>
+			}
+		}
+		PCF_GetDateTime(&pcfDateTime);
+ 584:	84 ea       	ldi	r24, 0xA4	; 164
+ 586:	90 e0       	ldi	r25, 0x00	; 0
+ 588:	0e 94 47 05 	call	0xa8e	; 0xa8e <PCF_GetDateTime>
+		godzina = pcfDateTime.hour;
+ 58c:	e4 ea       	ldi	r30, 0xA4	; 164
+ 58e:	f0 e0       	ldi	r31, 0x00	; 0
+ 590:	82 81       	ldd	r24, Z+2	; 0x02
+ 592:	80 93 ac 00 	sts	0x00AC, r24	; 0x8000ac <godzina>
+		minuty = pcfDateTime.minute;
+ 596:	91 81       	ldd	r25, Z+1	; 0x01
+ 598:	90 93 b5 00 	sts	0x00B5, r25	; 0x8000b5 <minuty>
+		sekundy = pcfDateTime.second;
+ 59c:	90 81       	ld	r25, Z
+ 59e:	90 93 62 00 	sts	0x0062, r25	; 0x800062 <sekundy>
+		
+		if (godzina == 1) DCF_ON;
+ 5a2:	81 30       	cpi	r24, 0x01	; 1
+ 5a4:	09 f4       	brne	.+2      	; 0x5a8 <main+0xe2>
+ 5a6:	c0 98       	cbi	0x18, 0	; 24
+		
+		
+		// Wy?wietlanie jedno?ci sekund:
+		temp_value = sekundy %10;
+ 5a8:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <sekundy>
+ 5ac:	81 9f       	mul	r24, r17
+ 5ae:	91 2d       	mov	r25, r1
+ 5b0:	11 24       	eor	r1, r1
+ 5b2:	96 95       	lsr	r25
+ 5b4:	96 95       	lsr	r25
+ 5b6:	96 95       	lsr	r25
+ 5b8:	99 0f       	add	r25, r25
+ 5ba:	29 2f       	mov	r18, r25
+ 5bc:	22 0f       	add	r18, r18
+ 5be:	22 0f       	add	r18, r18
+ 5c0:	92 0f       	add	r25, r18
+ 5c2:	89 1b       	sub	r24, r25
+ 5c4:	90 e0       	ldi	r25, 0x00	; 0
+ 5c6:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 5ca:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+
+		PORTB = (1<<PB2);
+ 5ce:	b8 ba       	out	0x18, r11	; 24
+		PORTA = 0x00;
+ 5d0:	1b ba       	out	0x1b, r1	; 27
+
+		digits(temp_value);
+ 5d2:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 5d6:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 5da:	0e 94 33 02 	call	0x466	; 0x466 <digits>
+		clear_ports();
+ 5de:	0e 94 59 02 	call	0x4b2	; 0x4b2 <clear_ports>
+		// Wy?wietlanie dziesi?tek sekund:
+		sekundy = sekundy/10;
+ 5e2:	80 91 62 00 	lds	r24, 0x0062	; 0x800062 <sekundy>
+ 5e6:	81 9f       	mul	r24, r17
+ 5e8:	81 2d       	mov	r24, r1
+ 5ea:	11 24       	eor	r1, r1
+ 5ec:	86 95       	lsr	r24
+ 5ee:	86 95       	lsr	r24
+ 5f0:	86 95       	lsr	r24
+ 5f2:	80 93 62 00 	sts	0x0062, r24	; 0x800062 <sekundy>
+		temp_value = sekundy%10;
+ 5f6:	81 9f       	mul	r24, r17
+ 5f8:	91 2d       	mov	r25, r1
+ 5fa:	11 24       	eor	r1, r1
+ 5fc:	96 95       	lsr	r25
+ 5fe:	96 95       	lsr	r25
+ 600:	96 95       	lsr	r25
+ 602:	99 0f       	add	r25, r25
+ 604:	29 2f       	mov	r18, r25
+ 606:	22 0f       	add	r18, r18
+ 608:	22 0f       	add	r18, r18
+ 60a:	92 0f       	add	r25, r18
+ 60c:	89 1b       	sub	r24, r25
+ 60e:	90 e0       	ldi	r25, 0x00	; 0
+ 610:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 614:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+		
+		PORTA = 0x00;
+ 618:	1b ba       	out	0x1b, r1	; 27
+		PORTB = (1<<PB3);
+ 61a:	c8 ba       	out	0x18, r12	; 24
+
+		digits(temp_value);
+ 61c:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 620:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 624:	0e 94 33 02 	call	0x466	; 0x466 <digits>
+		clear_ports();
+ 628:	0e 94 59 02 	call	0x4b2	; 0x4b2 <clear_ports>
+		// Wy?wietlanie jedno?ci minut:
+		temp_value = minuty%10;
+ 62c:	80 91 b5 00 	lds	r24, 0x00B5	; 0x8000b5 <minuty>
+ 630:	81 9f       	mul	r24, r17
+ 632:	91 2d       	mov	r25, r1
+ 634:	11 24       	eor	r1, r1
+ 636:	96 95       	lsr	r25
+ 638:	96 95       	lsr	r25
+ 63a:	96 95       	lsr	r25
+ 63c:	99 0f       	add	r25, r25
+ 63e:	29 2f       	mov	r18, r25
+ 640:	22 0f       	add	r18, r18
+ 642:	22 0f       	add	r18, r18
+ 644:	92 0f       	add	r25, r18
+ 646:	89 1b       	sub	r24, r25
+ 648:	90 e0       	ldi	r25, 0x00	; 0
+ 64a:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 64e:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+		
+		PORTA = 0x00;
+ 652:	1b ba       	out	0x1b, r1	; 27
+		PORTB = (1<<PB4);
+ 654:	d8 ba       	out	0x18, r13	; 24
+
+		digits(temp_value);
+ 656:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 65a:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 65e:	0e 94 33 02 	call	0x466	; 0x466 <digits>
+		clear_ports();
+ 662:	0e 94 59 02 	call	0x4b2	; 0x4b2 <clear_ports>
+		// Wy?wietlanie dziesi?tek minut:
+		minuty = minuty/10;
+ 666:	80 91 b5 00 	lds	r24, 0x00B5	; 0x8000b5 <minuty>
+ 66a:	81 9f       	mul	r24, r17
+ 66c:	81 2d       	mov	r24, r1
+ 66e:	11 24       	eor	r1, r1
+ 670:	86 95       	lsr	r24
+ 672:	86 95       	lsr	r24
+ 674:	86 95       	lsr	r24
+ 676:	80 93 b5 00 	sts	0x00B5, r24	; 0x8000b5 <minuty>
+		temp_value = minuty%10;
+ 67a:	81 9f       	mul	r24, r17
+ 67c:	91 2d       	mov	r25, r1
+ 67e:	11 24       	eor	r1, r1
+ 680:	96 95       	lsr	r25
+ 682:	96 95       	lsr	r25
+ 684:	96 95       	lsr	r25
+ 686:	99 0f       	add	r25, r25
+ 688:	29 2f       	mov	r18, r25
+ 68a:	22 0f       	add	r18, r18
+ 68c:	22 0f       	add	r18, r18
+ 68e:	92 0f       	add	r25, r18
+ 690:	89 1b       	sub	r24, r25
+ 692:	90 e0       	ldi	r25, 0x00	; 0
+ 694:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 698:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+
+		PORTA = 0x00;
+ 69c:	1b ba       	out	0x1b, r1	; 27
+		PORTB = (1<<PB5);
+ 69e:	e8 ba       	out	0x18, r14	; 24
+
+		digits(temp_value);
+ 6a0:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 6a4:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 6a8:	0e 94 33 02 	call	0x466	; 0x466 <digits>
+		clear_ports();
+ 6ac:	0e 94 59 02 	call	0x4b2	; 0x4b2 <clear_ports>
+		// Wy?wietlanie jedno?ci godzin:
+		temp_value = godzina%10;
+ 6b0:	80 91 ac 00 	lds	r24, 0x00AC	; 0x8000ac <godzina>
+ 6b4:	81 9f       	mul	r24, r17
+ 6b6:	91 2d       	mov	r25, r1
+ 6b8:	11 24       	eor	r1, r1
+ 6ba:	96 95       	lsr	r25
+ 6bc:	96 95       	lsr	r25
+ 6be:	96 95       	lsr	r25
+ 6c0:	99 0f       	add	r25, r25
+ 6c2:	29 2f       	mov	r18, r25
+ 6c4:	22 0f       	add	r18, r18
+ 6c6:	22 0f       	add	r18, r18
+ 6c8:	92 0f       	add	r25, r18
+ 6ca:	89 1b       	sub	r24, r25
+ 6cc:	90 e0       	ldi	r25, 0x00	; 0
+ 6ce:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 6d2:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+
+		PORTA = 0x00;
+ 6d6:	1b ba       	out	0x1b, r1	; 27
+		PORTB = (1<<PB6);
+ 6d8:	f8 ba       	out	0x18, r15	; 24
+
+		digits(temp_value);
+ 6da:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 6de:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 6e2:	0e 94 33 02 	call	0x466	; 0x466 <digits>
+		clear_ports();
+ 6e6:	0e 94 59 02 	call	0x4b2	; 0x4b2 <clear_ports>
+		// Wy?wietlanie dziesi?tek godzin:
+		godzina = godzina/10;
+ 6ea:	80 91 ac 00 	lds	r24, 0x00AC	; 0x8000ac <godzina>
+ 6ee:	81 9f       	mul	r24, r17
+ 6f0:	81 2d       	mov	r24, r1
+ 6f2:	11 24       	eor	r1, r1
+ 6f4:	86 95       	lsr	r24
+ 6f6:	86 95       	lsr	r24
+ 6f8:	86 95       	lsr	r24
+ 6fa:	80 93 ac 00 	sts	0x00AC, r24	; 0x8000ac <godzina>
+		temp_value = godzina%10;
+ 6fe:	81 9f       	mul	r24, r17
+ 700:	91 2d       	mov	r25, r1
+ 702:	11 24       	eor	r1, r1
+ 704:	96 95       	lsr	r25
+ 706:	96 95       	lsr	r25
+ 708:	96 95       	lsr	r25
+ 70a:	99 0f       	add	r25, r25
+ 70c:	29 2f       	mov	r18, r25
+ 70e:	22 0f       	add	r18, r18
+ 710:	22 0f       	add	r18, r18
+ 712:	92 0f       	add	r25, r18
+ 714:	89 1b       	sub	r24, r25
+ 716:	90 e0       	ldi	r25, 0x00	; 0
+ 718:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 71c:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <__DATA_REGION_ORIGIN__>
+
+		PORTA = 0x00;
+ 720:	1b ba       	out	0x1b, r1	; 27
+		PORTB = (1<<PB7);
+ 722:	08 bb       	out	0x18, r16	; 24
+
+		digits(temp_value);
+ 724:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <__DATA_REGION_ORIGIN__>
+ 728:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <__DATA_REGION_ORIGIN__+0x1>
+ 72c:	0e 94 33 02 	call	0x466	; 0x466 <digits>
+		clear_ports();
+ 730:	0e 94 59 02 	call	0x4b2	; 0x4b2 <clear_ports>
+
+		
+		}
+		
+		*/
+		}
+ 734:	07 cf       	rjmp	.-498    	; 0x544 <main+0x7e>
+
+00000736 <TWI_Init>:
+	alarm->hour = (((buffer[1] >> 4) & 0x0B) * 10) + (buffer[1] & 0x0F);
+	alarm->day = (((buffer[2] >> 4) & 0x0B) * 10) + (buffer[2] & 0x0F);
+	alarm->weekday = (((buffer[3] >> 4) & 0x08) * 10) + (buffer[3] & 0x07);
+
+	return 0;
+}
+ 736:	81 e0       	ldi	r24, 0x01	; 1
+ 738:	80 b9       	out	0x00, r24	; 0
+ 73a:	81 b1       	in	r24, 0x01	; 1
+ 73c:	83 70       	andi	r24, 0x03	; 3
+ 73e:	81 b9       	out	0x01, r24	; 1
+ 740:	08 95       	ret
+
+00000742 <TWI_Start>:
+ 742:	84 ea       	ldi	r24, 0xA4	; 164
+ 744:	86 bf       	out	0x36, r24	; 54
+ 746:	06 b6       	in	r0, 0x36	; 54
+ 748:	07 fe       	sbrs	r0, 7
+ 74a:	fd cf       	rjmp	.-6      	; 0x746 <TWI_Start+0x4>
+ 74c:	08 95       	ret
+
+0000074e <TWI_Stop>:
+ 74e:	84 e9       	ldi	r24, 0x94	; 148
+ 750:	86 bf       	out	0x36, r24	; 54
+ 752:	06 b6       	in	r0, 0x36	; 54
+ 754:	04 fc       	sbrc	r0, 4
+ 756:	fd cf       	rjmp	.-6      	; 0x752 <TWI_Stop+0x4>
+ 758:	08 95       	ret
+
+0000075a <TWI_Read>:
+ 75a:	81 11       	cpse	r24, r1
+ 75c:	02 c0       	rjmp	.+4      	; 0x762 <TWI_Read+0x8>
+ 75e:	84 e8       	ldi	r24, 0x84	; 132
+ 760:	01 c0       	rjmp	.+2      	; 0x764 <TWI_Read+0xa>
+ 762:	84 ec       	ldi	r24, 0xC4	; 196
+ 764:	86 bf       	out	0x36, r24	; 54
+ 766:	06 b6       	in	r0, 0x36	; 54
+ 768:	07 fe       	sbrs	r0, 7
+ 76a:	fd cf       	rjmp	.-6      	; 0x766 <TWI_Read+0xc>
+ 76c:	83 b1       	in	r24, 0x03	; 3
+ 76e:	08 95       	ret
+
+00000770 <TWI_Write>:
+ 770:	83 b9       	out	0x03, r24	; 3
+ 772:	84 e8       	ldi	r24, 0x84	; 132
+ 774:	86 bf       	out	0x36, r24	; 54
+ 776:	06 b6       	in	r0, 0x36	; 54
+ 778:	07 fe       	sbrs	r0, 7
+ 77a:	fd cf       	rjmp	.-6      	; 0x776 <TWI_Write+0x6>
+ 77c:	08 95       	ret
+
+0000077e <PCF_Write>:
+ 77e:	0f 93       	push	r16
+ 780:	1f 93       	push	r17
+ 782:	cf 93       	push	r28
+ 784:	df 93       	push	r29
+ 786:	18 2f       	mov	r17, r24
+ 788:	eb 01       	movw	r28, r22
+ 78a:	04 2f       	mov	r16, r20
+ 78c:	0e 94 a1 03 	call	0x742	; 0x742 <TWI_Start>
+ 790:	82 ea       	ldi	r24, 0xA2	; 162
+ 792:	0e 94 b8 03 	call	0x770	; 0x770 <TWI_Write>
+ 796:	81 2f       	mov	r24, r17
+ 798:	0e 94 b8 03 	call	0x770	; 0x770 <TWI_Write>
+ 79c:	00 23       	and	r16, r16
+ 79e:	61 f0       	breq	.+24     	; 0x7b8 <PCF_Write+0x3a>
+ 7a0:	01 50       	subi	r16, 0x01	; 1
+ 7a2:	10 e0       	ldi	r17, 0x00	; 0
+ 7a4:	0f 5f       	subi	r16, 0xFF	; 255
+ 7a6:	1f 4f       	sbci	r17, 0xFF	; 255
+ 7a8:	0c 0f       	add	r16, r28
+ 7aa:	1d 1f       	adc	r17, r29
+ 7ac:	89 91       	ld	r24, Y+
+ 7ae:	0e 94 b8 03 	call	0x770	; 0x770 <TWI_Write>
+ 7b2:	c0 17       	cp	r28, r16
+ 7b4:	d1 07       	cpc	r29, r17
+ 7b6:	d1 f7       	brne	.-12     	; 0x7ac <PCF_Write+0x2e>
+ 7b8:	0e 94 a7 03 	call	0x74e	; 0x74e <TWI_Stop>
+ 7bc:	df 91       	pop	r29
+ 7be:	cf 91       	pop	r28
+ 7c0:	1f 91       	pop	r17
+ 7c2:	0f 91       	pop	r16
+ 7c4:	08 95       	ret
+
+000007c6 <PCF_Read>:
+ 7c6:	0f 93       	push	r16
+ 7c8:	1f 93       	push	r17
+ 7ca:	cf 93       	push	r28
+ 7cc:	df 93       	push	r29
+ 7ce:	d8 2f       	mov	r29, r24
+ 7d0:	8b 01       	movw	r16, r22
+ 7d2:	c4 2f       	mov	r28, r20
+ 7d4:	0e 94 a1 03 	call	0x742	; 0x742 <TWI_Start>
+ 7d8:	82 ea       	ldi	r24, 0xA2	; 162
+ 7da:	0e 94 b8 03 	call	0x770	; 0x770 <TWI_Write>
+ 7de:	8d 2f       	mov	r24, r29
+ 7e0:	0e 94 b8 03 	call	0x770	; 0x770 <TWI_Write>
+ 7e4:	0e 94 a7 03 	call	0x74e	; 0x74e <TWI_Stop>
+ 7e8:	0e 94 a1 03 	call	0x742	; 0x742 <TWI_Start>
+ 7ec:	83 ea       	ldi	r24, 0xA3	; 163
+ 7ee:	0e 94 b8 03 	call	0x770	; 0x770 <TWI_Write>
+ 7f2:	cc 23       	and	r28, r28
+ 7f4:	49 f0       	breq	.+18     	; 0x808 <PCF_Read+0x42>
+ 7f6:	c1 50       	subi	r28, 0x01	; 1
+ 7f8:	8c 2f       	mov	r24, r28
+ 7fa:	0e 94 ad 03 	call	0x75a	; 0x75a <TWI_Read>
+ 7fe:	f8 01       	movw	r30, r16
+ 800:	81 93       	st	Z+, r24
+ 802:	8f 01       	movw	r16, r30
+ 804:	c1 11       	cpse	r28, r1
+ 806:	f7 cf       	rjmp	.-18     	; 0x7f6 <PCF_Read+0x30>
+ 808:	0e 94 a7 03 	call	0x74e	; 0x74e <TWI_Stop>
+ 80c:	df 91       	pop	r29
+ 80e:	cf 91       	pop	r28
+ 810:	1f 91       	pop	r17
+ 812:	0f 91       	pop	r16
+ 814:	08 95       	ret
+
+00000816 <PCF_Init>:
+ 816:	cf 93       	push	r28
+ 818:	df 93       	push	r29
+ 81a:	00 d0       	rcall	.+0      	; 0x81c <PCF_Init+0x6>
+ 81c:	cd b7       	in	r28, 0x3d	; 61
+ 81e:	de b7       	in	r29, 0x3e	; 62
+ 820:	8a 83       	std	Y+2, r24	; 0x02
+ 822:	0e 94 9b 03 	call	0x736	; 0x736 <TWI_Init>
+ 826:	19 82       	std	Y+1, r1	; 0x01
+ 828:	41 e0       	ldi	r20, 0x01	; 1
+ 82a:	be 01       	movw	r22, r28
+ 82c:	6f 5f       	subi	r22, 0xFF	; 255
+ 82e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 830:	80 e0       	ldi	r24, 0x00	; 0
+ 832:	0e 94 bf 03 	call	0x77e	; 0x77e <PCF_Write>
+ 836:	8a 81       	ldd	r24, Y+2	; 0x02
+ 838:	83 71       	andi	r24, 0x13	; 19
+ 83a:	8a 83       	std	Y+2, r24	; 0x02
+ 83c:	41 e0       	ldi	r20, 0x01	; 1
+ 83e:	be 01       	movw	r22, r28
+ 840:	6e 5f       	subi	r22, 0xFE	; 254
+ 842:	7f 4f       	sbci	r23, 0xFF	; 255
+ 844:	81 e0       	ldi	r24, 0x01	; 1
+ 846:	0e 94 bf 03 	call	0x77e	; 0x77e <PCF_Write>
+ 84a:	0f 90       	pop	r0
+ 84c:	0f 90       	pop	r0
+ 84e:	df 91       	pop	r29
+ 850:	cf 91       	pop	r28
+ 852:	08 95       	ret
+
+00000854 <PCF_SetTimer>:
+ 854:	cf 93       	push	r28
+ 856:	df 93       	push	r29
+ 858:	00 d0       	rcall	.+0      	; 0x85a <PCF_SetTimer+0x6>
+ 85a:	cd b7       	in	r28, 0x3d	; 61
+ 85c:	de b7       	in	r29, 0x3e	; 62
+ 85e:	6a 83       	std	Y+2, r22	; 0x02
+ 860:	83 78       	andi	r24, 0x83	; 131
+ 862:	89 83       	std	Y+1, r24	; 0x01
+ 864:	41 e0       	ldi	r20, 0x01	; 1
+ 866:	be 01       	movw	r22, r28
+ 868:	6f 5f       	subi	r22, 0xFF	; 255
+ 86a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 86c:	8e e0       	ldi	r24, 0x0E	; 14
+ 86e:	0e 94 bf 03 	call	0x77e	; 0x77e <PCF_Write>
+ 872:	41 e0       	ldi	r20, 0x01	; 1
+ 874:	be 01       	movw	r22, r28
+ 876:	6e 5f       	subi	r22, 0xFE	; 254
+ 878:	7f 4f       	sbci	r23, 0xFF	; 255
+ 87a:	8f e0       	ldi	r24, 0x0F	; 15
+ 87c:	0e 94 bf 03 	call	0x77e	; 0x77e <PCF_Write>
+ 880:	0f 90       	pop	r0
+ 882:	0f 90       	pop	r0
+ 884:	df 91       	pop	r29
+ 886:	cf 91       	pop	r28
+ 888:	08 95       	ret
+
+0000088a <PCF_SetDateTime>:
+
+uint8_t PCF_SetDateTime(PCF_DateTime *dateTime)
+{
+ 88a:	0f 93       	push	r16
+ 88c:	1f 93       	push	r17
+ 88e:	cf 93       	push	r28
+ 890:	df 93       	push	r29
+ 892:	cd b7       	in	r28, 0x3d	; 61
+ 894:	de b7       	in	r29, 0x3e	; 62
+ 896:	27 97       	sbiw	r28, 0x07	; 7
+ 898:	0f b6       	in	r0, 0x3f	; 63
+ 89a:	f8 94       	cli
+ 89c:	de bf       	out	0x3e, r29	; 62
+ 89e:	0f be       	out	0x3f, r0	; 63
+ 8a0:	cd bf       	out	0x3d, r28	; 61
+ 8a2:	fc 01       	movw	r30, r24
+	if (dateTime->second >= 60 || dateTime->minute >= 60 || dateTime->hour >= 24 || dateTime->day > 32 || dateTime->weekday > 6 || dateTime->month > 12 || dateTime->year < 1900 || dateTime->year >= 2100)
+ 8a4:	80 81       	ld	r24, Z
+ 8a6:	8c 33       	cpi	r24, 0x3C	; 60
+ 8a8:	08 f0       	brcs	.+2      	; 0x8ac <PCF_SetDateTime+0x22>
+ 8aa:	d9 c0       	rjmp	.+434    	; 0xa5e <PCF_SetDateTime+0x1d4>
+ 8ac:	91 81       	ldd	r25, Z+1	; 0x01
+ 8ae:	9c 33       	cpi	r25, 0x3C	; 60
+ 8b0:	08 f0       	brcs	.+2      	; 0x8b4 <PCF_SetDateTime+0x2a>
+ 8b2:	d7 c0       	rjmp	.+430    	; 0xa62 <PCF_SetDateTime+0x1d8>
+ 8b4:	32 81       	ldd	r19, Z+2	; 0x02
+ 8b6:	38 31       	cpi	r19, 0x18	; 24
+ 8b8:	08 f0       	brcs	.+2      	; 0x8bc <PCF_SetDateTime+0x32>
+ 8ba:	d5 c0       	rjmp	.+426    	; 0xa66 <PCF_SetDateTime+0x1dc>
+ 8bc:	23 81       	ldd	r18, Z+3	; 0x03
+ 8be:	21 32       	cpi	r18, 0x21	; 33
+ 8c0:	08 f0       	brcs	.+2      	; 0x8c4 <PCF_SetDateTime+0x3a>
+ 8c2:	d3 c0       	rjmp	.+422    	; 0xa6a <PCF_SetDateTime+0x1e0>
+ 8c4:	a4 81       	ldd	r26, Z+4	; 0x04
+ 8c6:	a7 30       	cpi	r26, 0x07	; 7
+ 8c8:	08 f0       	brcs	.+2      	; 0x8cc <PCF_SetDateTime+0x42>
+ 8ca:	d1 c0       	rjmp	.+418    	; 0xa6e <PCF_SetDateTime+0x1e4>
+ 8cc:	b5 81       	ldd	r27, Z+5	; 0x05
+ 8ce:	bd 30       	cpi	r27, 0x0D	; 13
+ 8d0:	08 f0       	brcs	.+2      	; 0x8d4 <PCF_SetDateTime+0x4a>
+ 8d2:	cf c0       	rjmp	.+414    	; 0xa72 <PCF_SetDateTime+0x1e8>
+ 8d4:	66 81       	ldd	r22, Z+6	; 0x06
+ 8d6:	77 81       	ldd	r23, Z+7	; 0x07
+ 8d8:	ab 01       	movw	r20, r22
+ 8da:	4c 56       	subi	r20, 0x6C	; 108
+ 8dc:	57 40       	sbci	r21, 0x07	; 7
+ 8de:	48 3c       	cpi	r20, 0xC8	; 200
+ 8e0:	51 05       	cpc	r21, r1
+ 8e2:	08 f0       	brcs	.+2      	; 0x8e6 <PCF_SetDateTime+0x5c>
+ 8e4:	c8 c0       	rjmp	.+400    	; 0xa76 <PCF_SetDateTime+0x1ec>
+		return 1;
+	}
+
+	uint8_t buffer[7];
+
+	buffer[0] = BinToBCD(dateTime->second) & 0x7F;
+ 8e6:	ed ec       	ldi	r30, 0xCD	; 205
+ 8e8:	8e 9f       	mul	r24, r30
+ 8ea:	f1 2d       	mov	r31, r1
+ 8ec:	11 24       	eor	r1, r1
+ 8ee:	f6 95       	lsr	r31
+ 8f0:	f6 95       	lsr	r31
+ 8f2:	f6 95       	lsr	r31
+ 8f4:	0f 2f       	mov	r16, r31
+ 8f6:	00 0f       	add	r16, r16
+ 8f8:	10 2f       	mov	r17, r16
+ 8fa:	11 0f       	add	r17, r17
+ 8fc:	11 0f       	add	r17, r17
+ 8fe:	10 0f       	add	r17, r16
+ 900:	81 1b       	sub	r24, r17
+ 902:	10 e1       	ldi	r17, 0x10	; 16
+ 904:	f1 9f       	mul	r31, r17
+ 906:	80 0d       	add	r24, r0
+ 908:	11 24       	eor	r1, r1
+ 90a:	8f 77       	andi	r24, 0x7F	; 127
+ 90c:	89 83       	std	Y+1, r24	; 0x01
+	buffer[1] = BinToBCD(dateTime->minute) & 0x7F;
+ 90e:	9e 9f       	mul	r25, r30
+ 910:	81 2d       	mov	r24, r1
+ 912:	11 24       	eor	r1, r1
+ 914:	86 95       	lsr	r24
+ 916:	86 95       	lsr	r24
+ 918:	86 95       	lsr	r24
+ 91a:	18 2f       	mov	r17, r24
+ 91c:	11 0f       	add	r17, r17
+ 91e:	f1 2f       	mov	r31, r17
+ 920:	ff 0f       	add	r31, r31
+ 922:	ff 0f       	add	r31, r31
+ 924:	f1 0f       	add	r31, r17
+ 926:	9f 1b       	sub	r25, r31
+ 928:	f0 e1       	ldi	r31, 0x10	; 16
+ 92a:	8f 9f       	mul	r24, r31
+ 92c:	90 0d       	add	r25, r0
+ 92e:	11 24       	eor	r1, r1
+ 930:	9f 77       	andi	r25, 0x7F	; 127
+ 932:	9a 83       	std	Y+2, r25	; 0x02
+	buffer[2] = BinToBCD(dateTime->hour) & 0x3F;
+ 934:	3e 9f       	mul	r19, r30
+ 936:	81 2d       	mov	r24, r1
+ 938:	11 24       	eor	r1, r1
+ 93a:	86 95       	lsr	r24
+ 93c:	86 95       	lsr	r24
+ 93e:	86 95       	lsr	r24
+ 940:	f8 2f       	mov	r31, r24
+ 942:	ff 0f       	add	r31, r31
+ 944:	9f 2f       	mov	r25, r31
+ 946:	99 0f       	add	r25, r25
+ 948:	99 0f       	add	r25, r25
+ 94a:	9f 0f       	add	r25, r31
+ 94c:	39 1b       	sub	r19, r25
+ 94e:	10 e1       	ldi	r17, 0x10	; 16
+ 950:	81 9f       	mul	r24, r17
+ 952:	30 0d       	add	r19, r0
+ 954:	11 24       	eor	r1, r1
+ 956:	3f 73       	andi	r19, 0x3F	; 63
+ 958:	3b 83       	std	Y+3, r19	; 0x03
+	buffer[3] = BinToBCD(dateTime->day) & 0x3F;
+ 95a:	2e 9f       	mul	r18, r30
+ 95c:	81 2d       	mov	r24, r1
+ 95e:	11 24       	eor	r1, r1
+ 960:	86 95       	lsr	r24
+ 962:	86 95       	lsr	r24
+ 964:	86 95       	lsr	r24
+ 966:	38 2f       	mov	r19, r24
+ 968:	33 0f       	add	r19, r19
+ 96a:	93 2f       	mov	r25, r19
+ 96c:	99 0f       	add	r25, r25
+ 96e:	99 0f       	add	r25, r25
+ 970:	93 0f       	add	r25, r19
+ 972:	29 1b       	sub	r18, r25
+ 974:	90 e1       	ldi	r25, 0x10	; 16
+ 976:	89 9f       	mul	r24, r25
+ 978:	20 0d       	add	r18, r0
+ 97a:	11 24       	eor	r1, r1
+ 97c:	2f 73       	andi	r18, 0x3F	; 63
+ 97e:	2c 83       	std	Y+4, r18	; 0x04
+	buffer[4] = BinToBCD(dateTime->weekday) & 0x07;
+ 980:	ae 9f       	mul	r26, r30
+ 982:	81 2d       	mov	r24, r1
+ 984:	11 24       	eor	r1, r1
+ 986:	86 95       	lsr	r24
+ 988:	86 95       	lsr	r24
+ 98a:	86 95       	lsr	r24
+ 98c:	88 0f       	add	r24, r24
+ 98e:	98 2f       	mov	r25, r24
+ 990:	99 0f       	add	r25, r25
+ 992:	99 0f       	add	r25, r25
+ 994:	89 0f       	add	r24, r25
+ 996:	a8 1b       	sub	r26, r24
+ 998:	a7 70       	andi	r26, 0x07	; 7
+ 99a:	ad 83       	std	Y+5, r26	; 0x05
+	buffer[5] = BinToBCD(dateTime->month) & 0x1F;
+ 99c:	be 9f       	mul	r27, r30
+ 99e:	e1 2d       	mov	r30, r1
+ 9a0:	11 24       	eor	r1, r1
+ 9a2:	e6 95       	lsr	r30
+ 9a4:	e6 95       	lsr	r30
+ 9a6:	e6 95       	lsr	r30
+ 9a8:	9e 2f       	mov	r25, r30
+ 9aa:	99 0f       	add	r25, r25
+ 9ac:	89 2f       	mov	r24, r25
+ 9ae:	88 0f       	add	r24, r24
+ 9b0:	88 0f       	add	r24, r24
+ 9b2:	89 0f       	add	r24, r25
+ 9b4:	b8 1b       	sub	r27, r24
+ 9b6:	f0 e1       	ldi	r31, 0x10	; 16
+ 9b8:	ef 9f       	mul	r30, r31
+ 9ba:	b0 0d       	add	r27, r0
+ 9bc:	11 24       	eor	r1, r1
+ 9be:	bf 71       	andi	r27, 0x1F	; 31
+ 9c0:	be 83       	std	Y+6, r27	; 0x06
+
+	if (dateTime->year >= 2000)
+ 9c2:	60 3d       	cpi	r22, 0xD0	; 208
+ 9c4:	77 40       	sbci	r23, 0x07	; 7
+ 9c6:	20 f1       	brcs	.+72     	; 0xa10 <PCF_SetDateTime+0x186>
+	{
+		buffer[5] |= 0x80;
+ 9c8:	b0 68       	ori	r27, 0x80	; 128
+ 9ca:	be 83       	std	Y+6, r27	; 0x06
+		buffer[6] = BinToBCD(dateTime->year - 2000);
+ 9cc:	44 56       	subi	r20, 0x64	; 100
+ 9ce:	51 09       	sbc	r21, r1
+ 9d0:	9a 01       	movw	r18, r20
+ 9d2:	ad ec       	ldi	r26, 0xCD	; 205
+ 9d4:	bc ec       	ldi	r27, 0xCC	; 204
+ 9d6:	0e 94 d4 05 	call	0xba8	; 0xba8 <__umulhisi3>
+ 9da:	96 95       	lsr	r25
+ 9dc:	87 95       	ror	r24
+ 9de:	96 95       	lsr	r25
+ 9e0:	87 95       	ror	r24
+ 9e2:	96 95       	lsr	r25
+ 9e4:	87 95       	ror	r24
+ 9e6:	bc 01       	movw	r22, r24
+ 9e8:	66 0f       	add	r22, r22
+ 9ea:	77 1f       	adc	r23, r23
+ 9ec:	9c 01       	movw	r18, r24
+ 9ee:	22 0f       	add	r18, r18
+ 9f0:	33 1f       	adc	r19, r19
+ 9f2:	22 0f       	add	r18, r18
+ 9f4:	33 1f       	adc	r19, r19
+ 9f6:	22 0f       	add	r18, r18
+ 9f8:	33 1f       	adc	r19, r19
+ 9fa:	26 0f       	add	r18, r22
+ 9fc:	37 1f       	adc	r19, r23
+ 9fe:	ba 01       	movw	r22, r20
+ a00:	62 1b       	sub	r22, r18
+ a02:	73 0b       	sbc	r23, r19
+ a04:	20 e1       	ldi	r18, 0x10	; 16
+ a06:	82 9f       	mul	r24, r18
+ a08:	60 0d       	add	r22, r0
+ a0a:	11 24       	eor	r1, r1
+ a0c:	6f 83       	std	Y+7, r22	; 0x07
+ a0e:	1e c0       	rjmp	.+60     	; 0xa4c <PCF_SetDateTime+0x1c2>
+	}
+	else
+	{
+		buffer[6] = BinToBCD(dateTime->year - 1900);
+ a10:	9a 01       	movw	r18, r20
+ a12:	ad ec       	ldi	r26, 0xCD	; 205
+ a14:	bc ec       	ldi	r27, 0xCC	; 204
+ a16:	0e 94 d4 05 	call	0xba8	; 0xba8 <__umulhisi3>
+ a1a:	96 95       	lsr	r25
+ a1c:	87 95       	ror	r24
+ a1e:	96 95       	lsr	r25
+ a20:	87 95       	ror	r24
+ a22:	96 95       	lsr	r25
+ a24:	87 95       	ror	r24
+ a26:	bc 01       	movw	r22, r24
+ a28:	66 0f       	add	r22, r22
+ a2a:	77 1f       	adc	r23, r23
+ a2c:	9c 01       	movw	r18, r24
+ a2e:	22 0f       	add	r18, r18
+ a30:	33 1f       	adc	r19, r19
+ a32:	22 0f       	add	r18, r18
+ a34:	33 1f       	adc	r19, r19
+ a36:	22 0f       	add	r18, r18
+ a38:	33 1f       	adc	r19, r19
+ a3a:	26 0f       	add	r18, r22
+ a3c:	37 1f       	adc	r19, r23
+ a3e:	42 1b       	sub	r20, r18
+ a40:	53 0b       	sbc	r21, r19
+ a42:	f0 e1       	ldi	r31, 0x10	; 16
+ a44:	8f 9f       	mul	r24, r31
+ a46:	40 0d       	add	r20, r0
+ a48:	11 24       	eor	r1, r1
+ a4a:	4f 83       	std	Y+7, r20	; 0x07
+	}
+
+	PCF_Write(0x02, buffer, sizeof(buffer));
+ a4c:	47 e0       	ldi	r20, 0x07	; 7
+ a4e:	be 01       	movw	r22, r28
+ a50:	6f 5f       	subi	r22, 0xFF	; 255
+ a52:	7f 4f       	sbci	r23, 0xFF	; 255
+ a54:	82 e0       	ldi	r24, 0x02	; 2
+ a56:	0e 94 bf 03 	call	0x77e	; 0x77e <PCF_Write>
+
+	return 0;
+ a5a:	80 e0       	ldi	r24, 0x00	; 0
+ a5c:	0d c0       	rjmp	.+26     	; 0xa78 <PCF_SetDateTime+0x1ee>
+
+uint8_t PCF_SetDateTime(PCF_DateTime *dateTime)
+{
+	if (dateTime->second >= 60 || dateTime->minute >= 60 || dateTime->hour >= 24 || dateTime->day > 32 || dateTime->weekday > 6 || dateTime->month > 12 || dateTime->year < 1900 || dateTime->year >= 2100)
+	{
+		return 1;
+ a5e:	81 e0       	ldi	r24, 0x01	; 1
+ a60:	0b c0       	rjmp	.+22     	; 0xa78 <PCF_SetDateTime+0x1ee>
+ a62:	81 e0       	ldi	r24, 0x01	; 1
+ a64:	09 c0       	rjmp	.+18     	; 0xa78 <PCF_SetDateTime+0x1ee>
+ a66:	81 e0       	ldi	r24, 0x01	; 1
+ a68:	07 c0       	rjmp	.+14     	; 0xa78 <PCF_SetDateTime+0x1ee>
+ a6a:	81 e0       	ldi	r24, 0x01	; 1
+ a6c:	05 c0       	rjmp	.+10     	; 0xa78 <PCF_SetDateTime+0x1ee>
+ a6e:	81 e0       	ldi	r24, 0x01	; 1
+ a70:	03 c0       	rjmp	.+6      	; 0xa78 <PCF_SetDateTime+0x1ee>
+ a72:	81 e0       	ldi	r24, 0x01	; 1
+ a74:	01 c0       	rjmp	.+2      	; 0xa78 <PCF_SetDateTime+0x1ee>
+ a76:	81 e0       	ldi	r24, 0x01	; 1
+	}
+
+	PCF_Write(0x02, buffer, sizeof(buffer));
+
+	return 0;
+}
+ a78:	27 96       	adiw	r28, 0x07	; 7
+ a7a:	0f b6       	in	r0, 0x3f	; 63
+ a7c:	f8 94       	cli
+ a7e:	de bf       	out	0x3e, r29	; 62
+ a80:	0f be       	out	0x3f, r0	; 63
+ a82:	cd bf       	out	0x3d, r28	; 61
+ a84:	df 91       	pop	r29
+ a86:	cf 91       	pop	r28
+ a88:	1f 91       	pop	r17
+ a8a:	0f 91       	pop	r16
+ a8c:	08 95       	ret
+
+00000a8e <PCF_GetDateTime>:
+
+uint8_t PCF_GetDateTime(PCF_DateTime *dateTime)
+{
+ a8e:	0f 93       	push	r16
+ a90:	1f 93       	push	r17
+ a92:	cf 93       	push	r28
+ a94:	df 93       	push	r29
+ a96:	cd b7       	in	r28, 0x3d	; 61
+ a98:	de b7       	in	r29, 0x3e	; 62
+ a9a:	27 97       	sbiw	r28, 0x07	; 7
+ a9c:	0f b6       	in	r0, 0x3f	; 63
+ a9e:	f8 94       	cli
+ aa0:	de bf       	out	0x3e, r29	; 62
+ aa2:	0f be       	out	0x3f, r0	; 63
+ aa4:	cd bf       	out	0x3d, r28	; 61
+ aa6:	8c 01       	movw	r16, r24
+	uint8_t buffer[7];
+
+	PCF_Read(0x02, buffer, sizeof(buffer));
+ aa8:	47 e0       	ldi	r20, 0x07	; 7
+ aaa:	be 01       	movw	r22, r28
+ aac:	6f 5f       	subi	r22, 0xFF	; 255
+ aae:	7f 4f       	sbci	r23, 0xFF	; 255
+ ab0:	82 e0       	ldi	r24, 0x02	; 2
+ ab2:	0e 94 e3 03 	call	0x7c6	; 0x7c6 <PCF_Read>
+
+	dateTime->second = (((buffer[0] >> 4) & 0x07) * 10) + (buffer[0] & 0x0F);
+ ab6:	89 81       	ldd	r24, Y+1	; 0x01
+ ab8:	98 2f       	mov	r25, r24
+ aba:	96 95       	lsr	r25
+ abc:	96 95       	lsr	r25
+ abe:	96 95       	lsr	r25
+ ac0:	9e 70       	andi	r25, 0x0E	; 14
+ ac2:	29 2f       	mov	r18, r25
+ ac4:	22 0f       	add	r18, r18
+ ac6:	22 0f       	add	r18, r18
+ ac8:	92 0f       	add	r25, r18
+ aca:	28 2f       	mov	r18, r24
+ acc:	2f 70       	andi	r18, 0x0F	; 15
+ ace:	92 0f       	add	r25, r18
+ ad0:	f8 01       	movw	r30, r16
+ ad2:	90 83       	st	Z, r25
+	dateTime->minute = (((buffer[1] >> 4) & 0x07) * 10) + (buffer[1] & 0x0F);
+ ad4:	9a 81       	ldd	r25, Y+2	; 0x02
+ ad6:	29 2f       	mov	r18, r25
+ ad8:	26 95       	lsr	r18
+ ada:	26 95       	lsr	r18
+ adc:	26 95       	lsr	r18
+ ade:	2e 70       	andi	r18, 0x0E	; 14
+ ae0:	32 2f       	mov	r19, r18
+ ae2:	33 0f       	add	r19, r19
+ ae4:	33 0f       	add	r19, r19
+ ae6:	23 0f       	add	r18, r19
+ ae8:	9f 70       	andi	r25, 0x0F	; 15
+ aea:	92 0f       	add	r25, r18
+ aec:	91 83       	std	Z+1, r25	; 0x01
+	dateTime->hour = (((buffer[2] >> 4) & 0x03) * 10) + (buffer[2] & 0x0F);
+ aee:	9b 81       	ldd	r25, Y+3	; 0x03
+ af0:	29 2f       	mov	r18, r25
+ af2:	26 95       	lsr	r18
+ af4:	26 95       	lsr	r18
+ af6:	26 95       	lsr	r18
+ af8:	26 70       	andi	r18, 0x06	; 6
+ afa:	32 2f       	mov	r19, r18
+ afc:	33 0f       	add	r19, r19
+ afe:	33 0f       	add	r19, r19
+ b00:	23 0f       	add	r18, r19
+ b02:	9f 70       	andi	r25, 0x0F	; 15
+ b04:	92 0f       	add	r25, r18
+ b06:	92 83       	std	Z+2, r25	; 0x02
+	dateTime->day = (((buffer[3] >> 4) & 0x03) * 10) + (buffer[3] & 0x0F);
+ b08:	9c 81       	ldd	r25, Y+4	; 0x04
+ b0a:	29 2f       	mov	r18, r25
+ b0c:	26 95       	lsr	r18
+ b0e:	26 95       	lsr	r18
+ b10:	26 95       	lsr	r18
+ b12:	26 70       	andi	r18, 0x06	; 6
+ b14:	32 2f       	mov	r19, r18
+ b16:	33 0f       	add	r19, r19
+ b18:	33 0f       	add	r19, r19
+ b1a:	23 0f       	add	r18, r19
+ b1c:	9f 70       	andi	r25, 0x0F	; 15
+ b1e:	92 0f       	add	r25, r18
+ b20:	93 83       	std	Z+3, r25	; 0x03
+	dateTime->weekday = (buffer[4] & 0x07);
+ b22:	9d 81       	ldd	r25, Y+5	; 0x05
+ b24:	97 70       	andi	r25, 0x07	; 7
+ b26:	94 83       	std	Z+4, r25	; 0x04
+	dateTime->month = ((buffer[5] >> 4) & 0x01) * 10 + (buffer[5] & 0x0F);
+ b28:	4e 81       	ldd	r20, Y+6	; 0x06
+ b2a:	44 fb       	bst	r20, 4
+ b2c:	99 27       	eor	r25, r25
+ b2e:	90 f9       	bld	r25, 0
+ b30:	99 0f       	add	r25, r25
+ b32:	29 2f       	mov	r18, r25
+ b34:	22 0f       	add	r18, r18
+ b36:	22 0f       	add	r18, r18
+ b38:	92 0f       	add	r25, r18
+ b3a:	24 2f       	mov	r18, r20
+ b3c:	2f 70       	andi	r18, 0x0F	; 15
+ b3e:	92 0f       	add	r25, r18
+ b40:	95 83       	std	Z+5, r25	; 0x05
+	dateTime->year = 1900 + ((buffer[6] >> 4) & 0x0F) * 10 + (buffer[6] & 0x0F);
+ b42:	9f 81       	ldd	r25, Y+7	; 0x07
+ b44:	29 2f       	mov	r18, r25
+ b46:	22 95       	swap	r18
+ b48:	2f 70       	andi	r18, 0x0F	; 15
+ b4a:	30 e0       	ldi	r19, 0x00	; 0
+ b4c:	b9 01       	movw	r22, r18
+ b4e:	66 0f       	add	r22, r22
+ b50:	77 1f       	adc	r23, r23
+ b52:	22 0f       	add	r18, r18
+ b54:	33 1f       	adc	r19, r19
+ b56:	22 0f       	add	r18, r18
+ b58:	33 1f       	adc	r19, r19
+ b5a:	22 0f       	add	r18, r18
+ b5c:	33 1f       	adc	r19, r19
+ b5e:	26 0f       	add	r18, r22
+ b60:	37 1f       	adc	r19, r23
+ b62:	24 59       	subi	r18, 0x94	; 148
+ b64:	38 4f       	sbci	r19, 0xF8	; 248
+ b66:	9f 70       	andi	r25, 0x0F	; 15
+ b68:	29 0f       	add	r18, r25
+ b6a:	31 1d       	adc	r19, r1
+
+	if (buffer[5] &  0x80)
+ b6c:	44 23       	and	r20, r20
+ b6e:	1c f0       	brlt	.+6      	; 0xb76 <PCF_GetDateTime+0xe8>
+	dateTime->minute = (((buffer[1] >> 4) & 0x07) * 10) + (buffer[1] & 0x0F);
+	dateTime->hour = (((buffer[2] >> 4) & 0x03) * 10) + (buffer[2] & 0x0F);
+	dateTime->day = (((buffer[3] >> 4) & 0x03) * 10) + (buffer[3] & 0x0F);
+	dateTime->weekday = (buffer[4] & 0x07);
+	dateTime->month = ((buffer[5] >> 4) & 0x01) * 10 + (buffer[5] & 0x0F);
+	dateTime->year = 1900 + ((buffer[6] >> 4) & 0x0F) * 10 + (buffer[6] & 0x0F);
+ b70:	37 83       	std	Z+7, r19	; 0x07
+ b72:	26 83       	std	Z+6, r18	; 0x06
+ b74:	05 c0       	rjmp	.+10     	; 0xb80 <PCF_GetDateTime+0xf2>
+
+	if (buffer[5] &  0x80)
+	{
+		dateTime->year += 100;
+ b76:	2c 59       	subi	r18, 0x9C	; 156
+ b78:	3f 4f       	sbci	r19, 0xFF	; 255
+ b7a:	f8 01       	movw	r30, r16
+ b7c:	37 83       	std	Z+7, r19	; 0x07
+ b7e:	26 83       	std	Z+6, r18	; 0x06
+	{
+		return 1;
+	}
+
+	return 0;
+ b80:	88 1f       	adc	r24, r24
+ b82:	88 27       	eor	r24, r24
+ b84:	88 1f       	adc	r24, r24
+ b86:	27 96       	adiw	r28, 0x07	; 7
+ b88:	0f b6       	in	r0, 0x3f	; 63
+ b8a:	f8 94       	cli
+ b8c:	de bf       	out	0x3e, r29	; 62
+ b8e:	0f be       	out	0x3f, r0	; 63
+ b90:	cd bf       	out	0x3d, r28	; 61
+ b92:	df 91       	pop	r29
+ b94:	cf 91       	pop	r28
+ b96:	1f 91       	pop	r17
+ b98:	0f 91       	pop	r16
+ b9a:	08 95       	ret
+
+00000b9c <__tablejump2__>:
+ b9c:	ee 0f       	add	r30, r30
+ b9e:	ff 1f       	adc	r31, r31
+ ba0:	05 90       	lpm	r0, Z+
+ ba2:	f4 91       	lpm	r31, Z
+ ba4:	e0 2d       	mov	r30, r0
+ ba6:	09 94       	ijmp
+
+00000ba8 <__umulhisi3>:
+ ba8:	a2 9f       	mul	r26, r18
+ baa:	b0 01       	movw	r22, r0
+ bac:	b3 9f       	mul	r27, r19
+ bae:	c0 01       	movw	r24, r0
+ bb0:	a3 9f       	mul	r26, r19
+ bb2:	70 0d       	add	r23, r0
+ bb4:	81 1d       	adc	r24, r1
+ bb6:	11 24       	eor	r1, r1
+ bb8:	91 1d       	adc	r25, r1
+ bba:	b2 9f       	mul	r27, r18
+ bbc:	70 0d       	add	r23, r0
+ bbe:	81 1d       	adc	r24, r1
+ bc0:	11 24       	eor	r1, r1
+ bc2:	91 1d       	adc	r25, r1
+ bc4:	08 95       	ret
+
+00000bc6 <_exit>:
+ bc6:	f8 94       	cli
+
+00000bc8 <__stop_program>:
+ bc8:	ff cf       	rjmp	.-2      	; 0xbc8 <__stop_program>
